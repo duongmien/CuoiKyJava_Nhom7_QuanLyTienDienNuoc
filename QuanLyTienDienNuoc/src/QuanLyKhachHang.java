@@ -61,22 +61,22 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 102, 102));
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 51));
-        jLabel1.setText("Mã Khách Hàng");
+        jLabel1.setText("Mã Khách Hàng:");
 
         jLabel3.setBackground(new java.awt.Color(255, 102, 102));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 102, 51));
-        jLabel3.setText("Tên Khách Hàng");
+        jLabel3.setText("Tên Khách Hàng:");
 
         jLabel4.setBackground(new java.awt.Color(255, 102, 102));
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 51));
-        jLabel4.setText("Địa Chỉ");
+        jLabel4.setText("Địa Chỉ:");
 
         jLabel5.setBackground(new java.awt.Color(255, 102, 102));
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 51));
-        jLabel5.setText("Số Điện Thoại");
+        jLabel5.setText("Số Điện Thoại:");
 
         jButton1.setBackground(new java.awt.Color(255, 102, 0));
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -195,7 +195,7 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
@@ -219,11 +219,11 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton5)
-                        .addGap(177, 177, 177))))
+                        .addGap(177, 177, 177))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67))))
         );
 
         pack();
