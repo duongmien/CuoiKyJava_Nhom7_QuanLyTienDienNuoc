@@ -71,8 +71,12 @@ public class QuanLyAdmin extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 102, 51));
         jLabel6.setText("Giới tính:");
 
+        manv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         manv.setEnabled(false);
 
+        tennv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        gt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gt.setForeground(new java.awt.Color(255, 102, 51));
         gt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nu", " " }));
 
@@ -80,13 +84,18 @@ public class QuanLyAdmin extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 102, 51));
         jLabel8.setText("Mật khẩu:");
 
+        passnv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         Edit.setBackground(new java.awt.Color(255, 102, 0));
+        Edit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Edit.setText("Edit");
 
         Delete.setBackground(new java.awt.Color(255, 102, 0));
+        Delete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Delete.setText("Delete");
 
         Clear.setBackground(new java.awt.Color(255, 102, 0));
+        Clear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Clear.setText("Clear");
         Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +104,10 @@ public class QuanLyAdmin extends javax.swing.JFrame {
         });
 
         AddBt.setBackground(new java.awt.Color(255, 102, 0));
+        AddBt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         AddBt.setText("Add");
 
+        SellerTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         SellerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -192,10 +203,10 @@ public class QuanLyAdmin extends javax.swing.JFrame {
                 .addGap(33, 33, 33))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("M:\\HK220\\CuoiKyThayQuang\\Imgs\\seller.png")); // NOI18N
         jLabel1.setText("jLabel1");
 
         back2.setBackground(new java.awt.Color(255, 255, 255));
+        back2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         back2.setText("BACK");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -206,7 +217,7 @@ public class QuanLyAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(41, 41, 41)

@@ -106,6 +106,7 @@ public class HoaDon extends javax.swing.JFrame {
         jLabel14.setText("Mục đích sử dụng điện:");
 
         jLabel2.setBackground(new java.awt.Color(255, 102, 102));
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\New folder (3)\\CuoiKyJava_Nhom7_QuanLyTienDienNuoc\\QuanLyTienDienNuoc\\src\\Imgs_QLTD\\logo2.jpg")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("TỔNG CÔNG TY ĐIỆN LỰC MIỀN TRUNG");
