@@ -19,8 +19,13 @@ public class JDBCConnection {
 
     public static Connection getJDBCConnection() {
         final String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;";
+<<<<<<< HEAD
+        final String user = "sa";
+        final String password = "123456";
+=======
         final String user = "mien";
         final String password = "12345";
+>>>>>>> adbcf5591f07fa33c58f7c12885c03a6565751f6
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return DriverManager.getConnection(url, user, password);
@@ -29,4 +34,16 @@ public class JDBCConnection {
         return null;
     }
 
+    public static void main(String[] args) {
+
+        JDBCConnection kn = new JDBCConnection();
+
+        try (Connection cnt = kn.getJDBCConnection()) {
+            //System.out.println("Kết nối thành công!");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+    }
 }
