@@ -199,7 +199,37 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         // TODO add your handling code here:
-        
+        if (RoleCb.getSelectedItem().toString().equals("Nhân viên")) {
+            String sql = "Select * from NhanVien where username='" + name.getText() + "'and MatKhau='" + pass.getText() + "'";
+            try {
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
+                st = con.createStatement();
+                rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    new QuanLyNhanVien().setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sai Mật Khẩu hoặc tên đăng nhập! Mời bạn nhập lại");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            String sql = "select * from tblAdmin where username='" + name.getText() + "' and MatKhau='" + pass.getText() + "'";
+            try {
+                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
+                st = con.createStatement();
+                rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    new QuanLyAdmin().setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sai Mật Khẩu hoặc tên đăng nhập! Mời bạn nhập lại");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_loginMouseClicked
 
     private void clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClicked

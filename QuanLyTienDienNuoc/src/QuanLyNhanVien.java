@@ -120,6 +120,11 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
         Clear.setBackground(new java.awt.Color(255, 102, 0));
         Clear.setText("Clear");
+        Clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ClearMouseClicked(evt);
+            }
+        });
         Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Performed(evt);
@@ -291,7 +296,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                             .addComponent(chucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,8 +321,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(back2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(back2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(16, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -432,7 +436,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         } else {
             try {
                 con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
-                String sql = "Update NhanVien set TenNV=N'" + tennv.getText() + "'" + ",MatKhau=N'" + pass.getText() + "'" + ",GioiTinh=N'" + gt.getSelectedItem().toString() + "'" +",username=N'" + tennguoidung.getText() + "'" + ",ngaysinh=N'" + ngaysinh.getText() + "'" + ",sdt=N'" + sdt.getText() +"'"+",chucvu=N'"+chucvu.getText()+"'"+  "where MaNV=" + manv.getText();
+                String sql = "Update NhanVien set TenNV=N'" + tennv.getText() + "'" + ",MatKhau=N'" + pass.getText() + "'" + ",GioiTinh=N'" + gt.getSelectedItem().toString() + "'" + ",username=N'" + tennguoidung.getText() + "'" + ",ngaysinh=N'" + ngaysinh.getText() + "'" + ",sdt=N'" + sdt.getText() + "'" + ",chucvu=N'" + chucvu.getText() + "'" + "where MaNV=" + manv.getText();
                 Statement Add = con.createStatement();
                 Add.executeUpdate(sql);
                 DisplayNVInTable();
@@ -442,6 +446,19 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_EditMouseClicked
+
+    private void ClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseClicked
+        // TODO add your handling code here:
+        manv.setText("");
+        tennv.setText("");
+        tennguoidung.setText("");
+        pass.setText("");
+        ngaysinh.setText("");
+        chucvu.setText("");
+        dc.setText("");
+        sdt.setText("");
+                
+    }//GEN-LAST:event_ClearMouseClicked
 
     /**
      * @param args the command line arguments
