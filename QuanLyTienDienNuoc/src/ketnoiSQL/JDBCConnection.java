@@ -18,15 +18,9 @@ import java.util.logging.Logger;
 public class JDBCConnection {
 
     public static Connection getJDBCConnection() {
-<<<<<<< HEAD
         final String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;";
         final String user = "mien";
         final String password = "12345";
-=======
-        
-        final String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;";
-        
->>>>>>> 8e90b9647e24578d1282951cbdb7ac3da12822bf
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return DriverManager.getConnection(url, user, password);
