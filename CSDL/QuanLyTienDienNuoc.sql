@@ -45,7 +45,9 @@ create table KhachHang(
 	ngaysinh date,
 	GioiTinh nvarchar(10),
 	SDT nvarchar(12),
-	DiaChi nvarchar(100)
+	DiaChi nvarchar(100),
+	TenPhuong nvarchar(50),
+	TenQuan nvarchar(50)
 )
 go
 create table tblSotieuthu
@@ -91,11 +93,11 @@ Insert into GiaNuoc values('0-4m3',6300)
 Insert into GiaNuoc values('4m3-6m3',12100)
 Insert into GiaNuoc values(N'Trên 6m3',13600)
 
-Insert into KhachHang values(N'Hồng Sơn','2001-1-1','nam','0911929192',N'Quảng Bình')
-Insert into KhachHang values(N'An Miên','2001-1-1',N'nữ','0911929193',N'Quảng Nam')
-Insert into KhachHang values(N'Khánh Hạ','2001-1-1',N'nữ','0911929194',N'Quảng Nam')
-Insert into KhachHang values(N'Thùy Linh','2001-1-1',N'nữ','0911929195',N'Nghệ An')
-Insert into KhachHang values(N'Hoàng Linh','2001-1-1',N'nữ','0911929196',N'Quảng Ngãi')
+Insert into KhachHang values(N'Nguyễn Hồng Sơn','2001-1-1','nam','0911929192',N'37 Lương Hữu Khánh',N'Thọ Quang',N'Sơn Trà')  
+Insert into KhachHang values(N'Dương Thị Miên','2001-1-1',N'nữ','0911929193',N'02 Thanh Sơn',N'Thanh Bình',N'Hải Châu')
+Insert into KhachHang values(N'Nguyễn Thị Khánh Hạ','2001-1-1',N'nữ','0911929194',N'512 Điện Biên Phủ ',N'Thanh Kê Đông',N'Thanh Khê')
+Insert into KhachHang values(N'Nguyễn Thị Thùy Linh','2001-1-1',N'nữ','0911929195',N'Thủy Sơn 4',N'Hoà Hải',N'Ngũ Hành Sơn') 
+Insert into KhachHang values(N'Nguyễn Thị Hoàng Linh','2001-1-1',N'nữ','0911929196',N'Q522B Nguyễn Lương Bằng',N'Hoà Hiệp Nam',N'Liên Chiểu')
 
 Insert into tblSotieuthu values(1,125,180,136,148,'2021-5-26')
 Insert into tblSotieuthu values(2,115,129,166,200,'2021-5-26')
