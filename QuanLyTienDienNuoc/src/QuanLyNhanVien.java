@@ -304,13 +304,16 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("M:\\HK220\\CuoiKyThayQuang\\Imgs\\seller.png")); // NOI18N
-
         back2.setBackground(new java.awt.Color(255, 255, 255));
         back2.setText("BACK");
         back2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back2MouseClicked(evt);
+            }
+        });
+        back2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                back2ActionPerformed(evt);
             }
         });
 
@@ -459,6 +462,10 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         new TinhTienDien().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_back2MouseClicked
+
+    private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_back2ActionPerformed
 
     /**
      * @param args the command line arguments
