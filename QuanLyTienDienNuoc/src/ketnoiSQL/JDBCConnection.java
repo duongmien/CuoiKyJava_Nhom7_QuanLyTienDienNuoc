@@ -18,26 +18,17 @@ import java.util.logging.Logger;
 public class JDBCConnection {
 
     public static Connection getJDBCConnection() {
-        final String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;";
-        final String user = "sa";
-        final String password = "123456";
+        
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            return DriverManager.getConnection(url, user, password);
-        } catch (ClassNotFoundException | SQLException e) {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+
+            return DriverManager.getConnection("jdbc:jtds:sqlserver://DESKTOP-OIQ8EAC:1433/QuanLyTienDienNuoc");
+        } catch (SQLException ex) {
+            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(JDBCConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public static void main(String[] args) {
-
-        JDBCConnection kn = new JDBCConnection();
-
-        if (kn.getJDBCConnection() != null) {
-            System.out.println("Thành công");
-        } else {
-            System.out.println("Không thành công");
-        }
-
-    }
 }
