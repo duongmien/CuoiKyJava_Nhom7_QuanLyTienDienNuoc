@@ -10,7 +10,7 @@ package account;
  * @author PC
  */
 public class Sotieuthu {
-    private int idTT, idKH;
+    private int idTT, maKH;
     private float chisocuDien, chisomoiDien, chisocuNuoc, chisomoiNuoc;
     private String ngayNhap;
 
@@ -18,8 +18,8 @@ public class Sotieuthu {
         return idTT;
     }
 
-    public int getIdKH() {
-        return idKH;
+    public int getMaKH() {
+        return maKH;
     }
 
     public float getChisocuDien() {
@@ -46,8 +46,8 @@ public class Sotieuthu {
         this.idTT = idTT;
     }
 
-    public void setIdKH(int idKH) {
-        this.idKH = idKH;
+    public void setMaKH(int idKH) {
+        this.maKH = idKH;
     }
 
     public void setChisocuDien(float chisocuDien) {

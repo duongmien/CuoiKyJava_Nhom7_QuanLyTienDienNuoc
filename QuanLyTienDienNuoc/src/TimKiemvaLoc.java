@@ -1,3 +1,10 @@
+
+import account.KhachHang;
+import account.Sotieuthu;
+import daocuaHa.ServiceH;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,14 +16,69 @@
  * @author PC
  */
 public class TimKiemvaLoc extends javax.swing.JFrame {
-
+    ServiceH serviceH;
+    DefaultTableModel defaultTableModelTTKH;
+    DefaultTableModel defaultTableModelTTCS;
     /**
      * Creates new form TimKiemvaLoc
      */
     public TimKiemvaLoc() {
         initComponents();
+        serviceH = new ServiceH();
+        setColumnTableTTKH();
+        setTableDataTTKH(serviceH.getAllKhachHang("select * from khachhang"));
+        setColumnTableTTCS();
+        setTableDataTTCS(serviceH.getAllSoTieuThu("select * from SoTieuThu"));
     }
 
+    //tab 1
+    private void setTableDataTTKH(List<KhachHang> khachHangs){
+        for (KhachHang khachHang : khachHangs) {
+            defaultTableModelTTKH.addRow(new Object[]{khachHang.getMaKH(), khachHang.getTenKH(), khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getSdt(), khachHang.getDiaChi(), khachHang.getTenPhuong(), khachHang.getTenQuan()});
+        }
+    }
+    private void setColumnTableTTKH(){
+        defaultTableModelTTKH = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tableTTKH.setModel(defaultTableModelTTKH);
+
+        defaultTableModelTTKH.addColumn("MaKH");
+        defaultTableModelTTKH.addColumn("Tên KH");
+        defaultTableModelTTKH.addColumn("Ngày Sinh");
+        defaultTableModelTTKH.addColumn("Giới Tính");
+        defaultTableModelTTKH.addColumn("SDT");
+        defaultTableModelTTKH.addColumn("Địa chỉ");
+        defaultTableModelTTKH.addColumn("Tên Phường");
+        defaultTableModelTTKH.addColumn("Tên Quận");   
+    }
+    
+    //tab 2
+    private void setTableDataTTCS(List<Sotieuthu> khachHangs){
+        for (Sotieuthu khachHang : khachHangs) {
+            defaultTableModelTTKH.addRow(new Object[]{khachHang.getIdTT(), khachHang.getMaKH(), khachHang.getChisocuDien(), khachHang.getChisomoiDien(), khachHang.getChisocuNuoc(), khachHang.getChisomoiNuoc(), khachHang.getNgayNhap()});
+        }
+    }
+    private void setColumnTableTTCS(){
+        defaultTableModelTTCS = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tableTTCS.setModel(defaultTableModelTTCS);
+
+        defaultTableModelTTCS.addColumn("IdTT");
+        defaultTableModelTTCS.addColumn("MaKH");
+        defaultTableModelTTCS.addColumn("Chỉ số điện cũ");
+        defaultTableModelTTCS.addColumn("Chỉ số điện mới");
+        defaultTableModelTTCS.addColumn("Chỉ số nước cũ");
+        defaultTableModelTTCS.addColumn("Chỉ số nước mới");
+        defaultTableModelTTCS.addColumn("Ngày nhập");  
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,17 +96,21 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         Clear = new javax.swing.JButton();
         AddBt = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        manv1 = new javax.swing.JTextField();
+        sapxeptheo = new javax.swing.JComboBox<>();
+        nhapquan = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        manv = new javax.swing.JTextField();
+        nhapten = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        manv2 = new javax.swing.JTextField();
+        nhapphuong = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        manv3 = new javax.swing.JTextField();
+        nhapdiachi = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableTTKH = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableTTCS = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -89,8 +155,8 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 102, 51));
         jLabel10.setText("DANH SÁCH KẾT QUẢ");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mức tiêu thụ tăng dần", "Mức tiêu thụ giảm dần" }));
+        sapxeptheo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        sapxeptheo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mức tiêu thụ tăng dần", "Mức tiêu thụ giảm dần" }));
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
 
@@ -99,12 +165,12 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(manv, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nhapten, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(manv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+            .addComponent(nhapten, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
         );
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -115,28 +181,54 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 102, 51));
         jLabel7.setText("Nhập địa chỉ:");
 
+        tableTTKH.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tableTTKH);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 743, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 228, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab1", jPanel3);
+
+        tableTTCS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tableTTCS);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 743, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 228, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab2", jPanel5);
@@ -169,20 +261,20 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(sapxeptheo, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(manv2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nhapphuong, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(manv3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nhapdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(manv1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(nhapquan, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Clear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,24 +291,24 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manv1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nhapquan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manv2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nhapphuong, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(manv3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nhapdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(AddBt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sapxeptheo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel10)
@@ -320,7 +412,6 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBt;
     private javax.swing.JButton Clear;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -334,10 +425,15 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField manv;
-    private javax.swing.JTextField manv1;
-    private javax.swing.JTextField manv2;
-    private javax.swing.JTextField manv3;
+    private javax.swing.JTextField nhapdiachi;
+    private javax.swing.JTextField nhapphuong;
+    private javax.swing.JTextField nhapquan;
+    private javax.swing.JTextField nhapten;
+    private javax.swing.JComboBox<String> sapxeptheo;
+    private javax.swing.JTable tableTTCS;
+    private javax.swing.JTable tableTTKH;
     // End of variables declaration//GEN-END:variables
 }

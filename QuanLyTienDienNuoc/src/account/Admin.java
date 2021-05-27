@@ -12,11 +12,11 @@ import java.util.logging.Logger;
  * @author PC
  */
 public class Admin {
-    private int maNV;
+    private int maAdmin;
     private String tenNV, username, gioiTinh, ngaySinh, sdt, diaChi, chucVu, matKhau;
 
-    public int getMaNV() {
-        return maNV;
+    public int getMaAdmin() {
+        return maAdmin;
     }
 
     public String getTenNV() {
@@ -51,8 +51,8 @@ public class Admin {
         return matKhau;
     }
 
-    public void setMaNV(int maNV) {
-        this.maNV = maNV;
+    public void setMaAdmin(int maAdmin) {
+        this.maAdmin = maAdmin;
     }
 
     public void setTenNV(String tenNV) {

@@ -5,21 +5,20 @@
  */
 package account;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author PC
  */
 public class KhachHang {
-    private int maKH, idGDN;
-    private String tenKH, ngaySinh, gioiTinh, sdt, doiTuong, diaChi;
+    private int maKH;
+    private String tenKH, ngaySinh, gioiTinh, sdt, doiTuong, diaChi, tenPhuong, tenQuan;
 
     public int getMaKH() {
         return maKH;
     }
 
-    public int getIdGDN() {
-        return idGDN;
-    }
 
     public String getTenKH() {
         return tenKH;
@@ -49,9 +48,6 @@ public class KhachHang {
         this.maKH = maKH;
     }
 
-    public void setIdGDN(int idGDN) {
-        this.idGDN = idGDN;
-    }
 
     public void setTenKH(String tenKH) {
         this.tenKH = tenKH;
@@ -75,6 +71,22 @@ public class KhachHang {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
+    }
+
+    public String getTenPhuong() {
+        return tenPhuong;
+    }
+
+    public String getTenQuan() {
+        return tenQuan;
+    }
+
+    public void setTenPhuong(String tenPhuong) {
+        this.tenPhuong = tenPhuong;
+    }
+
+    public void setTenQuan(String tenQuan) {
+        this.tenQuan = tenQuan;
     }
     
 }
