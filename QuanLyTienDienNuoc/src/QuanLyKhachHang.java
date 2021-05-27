@@ -16,15 +16,18 @@ import javax.swing.table.DefaultTableModel;
 import ketnoiSQL.JDBCConnection;
 import static ketnoiSQL.JDBCConnection.getJDBCConnection;
 import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author Admin
  */
 public class QuanLyKhachHang extends javax.swing.JFrame {
-    DefaultTableModel tbn= new DefaultTableModel();
-Connection con = getJDBCConnection();
+
+    DefaultTableModel tbn = new DefaultTableModel();
+    Connection con = getJDBCConnection();
     Statement st = null;
     ResultSet rs = null;
+
     /**
      * Creates new form QuanLyKhachHang
      */
@@ -34,6 +37,7 @@ Connection con = getJDBCConnection();
         loadComobox();
         LoadTextField();
     }
+
     public void DisplayKHInTable() {
         try {
 
@@ -44,46 +48,46 @@ Connection con = getJDBCConnection();
             e.printStackTrace();
         }
     }
-    public void loadComobox(){
-    try{
-        Connection con = JDBCConnection.getJDBCConnection();
-            PreparedStatement ps=con.prepareStatement("Select GioiTinh from KhachHang group by GioiTinh");
-            //PreparedStatement ps=con.prepareStatement("Select size from tblSanpham group by size");
-            ResultSet rs =ps.executeQuery();
-            while(rs.next()){
-                gt.addItem(rs.getString("GioiTinh"));
-                
-            }
-    }catch(Exception e){
-       System.out.println(e.toString()); 
-    }
-}
-    
-     public void LoadTextField(){
+
+    public void loadComobox() {
         try {
-           tbKhachhang.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-               @Override
-               public void valueChanged(ListSelectionEvent e) {
-                 if(tbKhachhang.getSelectedRow()>=0)  {
-                     mkh.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 0)+"");
-                     tkh.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 1)+"");
-                     ngsinh.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 2)+"");
-                     gt.setSelectedItem(tbKhachhang.getModel().getValueAt(tbKhachhang.getSelectedRow(),3)+"");
-                     
-                     sdt.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 4)+"");
-                     dc.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 5)+"");
-                     tp.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 6)+"");
-                     tq.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 7)+"");
-                     
-                     
-                 }
-               }
-           });
-        }catch(Exception e){
-           System.out.println(e.toString()); 
+            Connection con = JDBCConnection.getJDBCConnection();
+            PreparedStatement ps = con.prepareStatement("Select GioiTinh from KhachHang group by GioiTinh");
+            //PreparedStatement ps=con.prepareStatement("Select size from tblSanpham group by size");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                gt.addItem(rs.getString("GioiTinh"));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
-     }
-     
+    }
+
+    public void LoadTextField() {
+        try {
+            tbKhachhang.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    if (tbKhachhang.getSelectedRow() >= 0) {
+                        mkh.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 0) + "");
+                        tkh.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 1) + "");
+                        ngsinh.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 2) + "");
+                        gt.setSelectedItem(tbKhachhang.getModel().getValueAt(tbKhachhang.getSelectedRow(), 3) + "");
+
+                        sdt.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 4) + "");
+                        dc.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 5) + "");
+                        tp.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 6) + "");
+                        tq.setText(tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 7) + "");
+
+                    }
+                }
+            });
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -286,11 +290,16 @@ Connection con = getJDBCConnection();
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(298, 298, 298)
+<<<<<<< HEAD
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(168, Short.MAX_VALUE))
+=======
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(131, Short.MAX_VALUE))
+>>>>>>> 8e90b9647e24578d1282951cbdb7ac3da12822bf
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,75 +408,73 @@ Connection con = getJDBCConnection();
 
     private void ClearPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearPerformed
         mkh.setText("");
-         tkh.setText("");
-         ngsinh.setText("");
-          gt.setSelectedItem("");
-           
-            sdt.setText("");
-             dc.setText("");
-              tp.setText("");
-               tq.setText("");
+        tkh.setText("");
+        ngsinh.setText("");
+        gt.setSelectedItem("");
+        sdt.setText("");
+        dc.setText("");
+        tp.setText("");
+        tq.setText("");
 // TODO add your handling code here:
 
     }//GEN-LAST:event_ClearPerformed
 
     private void AddBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtActionPerformed
-        try{
+        try {
             Connection con = JDBCConnection.getJDBCConnection();
-            PreparedStatement ps=con.prepareStatement("insert into KhachHang values (?,?,?,?,?,?,?,?)");
-            ps.setString(1,mkh.getText());
-            ps.setString(2,tkh.getText());
+            PreparedStatement ps = con.prepareStatement("insert into KhachHang values (?,?,?,?,?,?,?,?)");
+            ps.setString(1, mkh.getText());
+            ps.setString(2, tkh.getText());
             //ps.setString(3,lsp.getText());
-            ps.setString(3,ngsinh.getText());
-            ps.setString(4,gt.getSelectedItem().toString());
-            ps.setString(5,sdt.getText());
-            ps.setString(6,dc.getText());
-            ps.setString(7,tp.getText());
-            ps.setString(8,tq.getText());
+            ps.setString(3, ngsinh.getText());
+            ps.setString(4, gt.getSelectedItem().toString());
+            ps.setString(5, sdt.getText());
+            ps.setString(6, dc.getText());
+            ps.setString(7, tp.getText());
+            ps.setString(8, tq.getText());
             //ps.setString(8,size.getText());
-            
+
             int chk = ps.executeUpdate();
-            if(chk > 0){
+            if (chk > 0) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công!");
                 tbn.setRowCount(0);
                 DisplayKHInTable();
-                
+
+            } else {
+
             }
-            else{
-                
-            }
-            
-       }catch(Exception e){
-         System.out.println(e.toString());   
-       }
-        
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
 // TODO add your handling code here:
     }//GEN-LAST:event_AddBtActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-         try{
-          Connection con = JDBCConnection.getJDBCConnection();
-            PreparedStatement com=con.prepareStatement("Delete  Khachhang  where MaKH=?");
-            com.setString(1, tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(),0).toString());
-            if(JOptionPane.showConfirmDialog(this, "Delete  KhachHang?", "confirm",
-                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-                     com.executeUpdate();
-                     tbn.setRowCount(0);
-                     DisplayKHInTable();
-                     
+        try {
+            Connection con = JDBCConnection.getJDBCConnection();
+            PreparedStatement com = con.prepareStatement("Delete  Khachhang  where MaKH=?");
+            com.setString(1, tbKhachhang.getValueAt(tbKhachhang.getSelectedRow(), 0).toString());
+            if (JOptionPane.showConfirmDialog(this, "Delete  KhachHang?", "confirm",
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                com.executeUpdate();
+                tbn.setRowCount(0);
+                DisplayKHInTable();
+
             }
-       }catch(Exception e){
-          System.out.println(e.toString());   
-       }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
 // TODO add your handling code here:
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        try{
-             Connection con = JDBCConnection.getJDBCConnection();
-            PreparedStatement com=con.prepareStatement("update  KhachHang set TenKH=?,ngaysinh=?,GioiTinh=?,SDT=?,DiaChi=?,TenPhuong=?,TenQuan=? where MaKH=?");
-            com.setString(8,mkh.getText());
-            
+        try {
+            Connection con = JDBCConnection.getJDBCConnection();
+            PreparedStatement com = con.prepareStatement("update  KhachHang set TenKH=?,ngaysinh=?,GioiTinh=?,SDT=?,DiaChi=?,TenPhuong=?,TenQuan=? where MaKH=?");
+            com.setString(8, mkh.getText());
+
             com.setString(1, tkh.getText());
             com.setString(2, ngsinh.getText());
             com.setString(3, gt.getSelectedItem().toString());
@@ -476,16 +483,13 @@ Connection con = getJDBCConnection();
             com.setString(6, tp.getText());
             com.setString(7, tq.getText());
             //com.setString(7, size.getText());
-            
-            
-            
+
             com.executeUpdate();
             tbn.setRowCount(0);
             DisplayKHInTable();
 
-            
-        }catch(Exception e){
-            System.out.println(e.toString());   
+        } catch (Exception e) {
+            System.out.println(e.toString());
         }
 // TODO add your handling code here:
     }//GEN-LAST:event_EditActionPerformed

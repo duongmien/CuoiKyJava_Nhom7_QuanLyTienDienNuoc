@@ -66,6 +66,8 @@ create table tblHoaDon
 	IdHD int identity primary key,
 	MaKH  int foreign key references KhachHang(MaKH),
 	TenKH nvarchar(50),
+	SoTieuThuDien float,
+	SoTieuThuNuoc float,
 	TongTienDien real,
 	TongTienNuoc real,
 	ngayTaoHD date,
@@ -105,8 +107,8 @@ Insert into tblSotieuthu values(3,124,163,36,78,'2021-5-26')
 Insert into tblSotieuthu values(4,156,190,116,138,'2021-5-26')
 Insert into tblSotieuthu values(5,25,80,136,168,'2021-5-26')
 
-Insert into tblHoaDon values(1,N'Hồng Sơn',80000,68000,'2021-5-26')
-Insert into tblHoaDon values(2,N'An Miên',68000,42000,'2021-5-26')
-Insert into tblHoaDon values(3,N'Khánh Hạ',103000,100000,'2021-5-26')
-Insert into tblHoaDon values(4,N'Thùy Linh',54000,25000,'2021-5-26')
-Insert into tblHoaDon values(5,N'Hoàng Linh',96000,20000,'2021-5-26')
+Insert into tblHoaDon values(1,N'Hồng Sơn',300,50,80000,68000,'2021-5-26')
+Insert into tblHoaDon values(2,N'An Miên',300,50,68000,42000,'2021-5-26')
+Insert into tblHoaDon values(3,N'Khánh Hạ',300,50,103000,100000,'2021-5-26')
+Insert into tblHoaDon values(4,N'Thùy Linh',300,50,54000,25000,'2021-5-26')
+Insert into tblHoaDon values(5,N'Hoàng Linh',300,50,96000,20000,'2021-5-26')
