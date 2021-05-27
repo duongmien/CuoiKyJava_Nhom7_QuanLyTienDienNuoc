@@ -308,6 +308,11 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
         back2.setBackground(new java.awt.Color(255, 255, 255));
         back2.setText("BACK");
+        back2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -448,6 +453,12 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         sdt.setText("");
 
     }//GEN-LAST:event_ClearMouseClicked
+
+    private void back2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back2MouseClicked
+        // TODO add your handling code here:
+        new TinhTienDien().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_back2MouseClicked
 
     /**
      * @param args the command line arguments
