@@ -380,7 +380,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                 add.setString(8, pass.getText());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công!");
-               
+
                 DisplayNVInTable();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -437,8 +437,9 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
     private void ClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseClicked
         // TODO add your handling code here:
-        manv.setText("");
+
         tennv.setText("");
+        manv.setText("");
         tennguoidung.setText("");
         pass.setText("");
         ngaysinh.setText("");
