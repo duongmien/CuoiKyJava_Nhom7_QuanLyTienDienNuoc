@@ -62,8 +62,11 @@ public void ReloadTbl() {
                 vec.add(rs.getDouble("chisocuNuoc"));
                 tblModel.addRow(vec);
             }
-
             tblCSD.setModel(tblModel);
+            btnLuu.setEnabled(false);
+            btnXuatHD.setEnabled(false);
+            txtCSDM.setText("");
+            txtCSNM.setText("");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -489,6 +492,9 @@ public void ReloadTbl() {
         txtCSNC.setText(chisocuNuoc);
         btnLuu.setEnabled(true);
         btnXuatHD.setEnabled(true);
+        txtCSDM.setText("");
+        txtCSNM.setText("");
+        
     }//GEN-LAST:event_tblCSDMouseClicked
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
@@ -514,9 +520,23 @@ public void ReloadTbl() {
             }
             try {
 
+               
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
+        try {
+            ps = connect.prepareStatement("update tblSotieuthu set chisocuDien =?,chisocuNuoc =? where IdTT=?");
+            
+            ps.setString(3, txtMTT.getText());
+            ps.setString(1, txtCSDM.getText());
+            ps.setString(2, txtCSNM.getText());           
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Lưu thành công ! ");
+            tblModel.getDataVector().removeAllElements();
+            ReloadTbl();
+            
+        } catch (Exception e) {
+        }
 
         }
     }//GEN-LAST:event_btnLuuActionPerformed
