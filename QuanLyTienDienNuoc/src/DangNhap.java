@@ -4,22 +4,23 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import static ketnoiSQL.JDBCConnection.getJDBCConnection;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ADMIN
  */
 public class DangNhap extends javax.swing.JFrame {
 
-    Connection con = null;
+    Connection con = getJDBCConnection();
     Statement st = null;
     ResultSet rs = null;
+
     public DangNhap() {
         initComponents();
     }
@@ -202,7 +203,7 @@ public class DangNhap extends javax.swing.JFrame {
         if (RoleCb.getSelectedItem().toString().equals("Nhân viên")) {
             String sql = "Select * from NhanVien where username='" + name.getText() + "'and MatKhau='" + pass.getText() + "'";
             try {
-                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
+
                 st = con.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
@@ -217,7 +218,7 @@ public class DangNhap extends javax.swing.JFrame {
         } else {
             String sql = "select * from tblAdmin where username='" + name.getText() + "' and MatKhau='" + pass.getText() + "'";
             try {
-                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
+
                 st = con.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
