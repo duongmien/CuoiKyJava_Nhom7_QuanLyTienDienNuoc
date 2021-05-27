@@ -12,7 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import ketnoiSQL.JDBCConnection;
 
 /**
@@ -33,8 +35,8 @@ public class ActcuaHa {
                 hoaDon.setMaKH(rs.getInt("makh"));
                 hoaDon.setTenKH(rs.getString("tenkh"));
                 hoaDon.setNgaySinh(rs.getString("ngaysinh"));
-                hoaDon.setGioiTinh(rs.getString("gioitinh"));
                 hoaDon.setSdt(rs.getString("sdt"));
+                hoaDon.setGioiTinh(rs.getString("gioitinh"));
                 hoaDon.setDiaChi(rs.getString("diachi"));
                 hoaDon.setTenPhuong(rs.getString("tenphuong"));
                 hoaDon.setTenQuan(rs.getString("tenquan"));
@@ -47,7 +49,7 @@ public class ActcuaHa {
     }
     public List<Sotieuthu> getAllSoTieuThu(String lenh) {
 
-        List<Sotieuthu> hoadons = new ArrayList<Sotieuthu>();
+        List<Sotieuthu> sotieuthus = new ArrayList<Sotieuthu>();
         Connection cnt = JDBCConnection.getJDBCConnection();
         String sql = lenh;
         try {
@@ -62,11 +64,12 @@ public class ActcuaHa {
                 hoaDon.setChisocuNuoc(rs.getFloat("chisocuNuoc"));
                 hoaDon.setChisomoiNuoc(rs.getFloat("chisomoiNuoc"));
                 hoaDon.setNgayNhap(rs.getString("ngayNhap"));
-                hoadons.add(hoaDon);
+                sotieuthus.add(hoaDon);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return hoadons;
+        return sotieuthus;
     }
+    
 }
