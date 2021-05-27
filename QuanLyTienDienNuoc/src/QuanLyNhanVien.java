@@ -380,7 +380,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                 add.setString(8, pass.getText());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Thêm nhân viên thành công!");
-                con.close();
+               
                 DisplayNVInTable();
             } catch (Exception e) {
                 e.printStackTrace();
