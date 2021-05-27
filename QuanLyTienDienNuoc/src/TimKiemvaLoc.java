@@ -16,16 +16,17 @@ import ketnoiSQL.JDBCConnection;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author PC
  */
 public class TimKiemvaLoc extends javax.swing.JFrame {
+
     ServiceH serviceH;
     DefaultTableModel defaultTableModelTTKH;
     DefaultTableModel defaultTableModelTTCS;
     String lenh;
+
     /**
      * Creates new form TimKiemvaLoc
      */
@@ -41,13 +42,13 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
     }
 
     //tab 1
-    
-    private void setTableDataTTKH(List<KhachHang> khachHangs){
+    private void setTableDataTTKH(List<KhachHang> khachHangs) {
         for (KhachHang khachHang : khachHangs) {
             defaultTableModelTTKH.addRow(new Object[]{khachHang.getMaKH(), khachHang.getTenKH(), khachHang.getNgaySinh(), khachHang.getGioiTinh(), khachHang.getSdt(), khachHang.getDiaChi(), khachHang.getTenPhuong(), khachHang.getTenQuan()});
         }
     }
-    private void setColumnTableTTKH(){
+
+    private void setColumnTableTTKH() {
         defaultTableModelTTKH = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -63,16 +64,17 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         defaultTableModelTTKH.addColumn("SDT");
         defaultTableModelTTKH.addColumn("Địa chỉ");
         defaultTableModelTTKH.addColumn("Tên Phường");
-        defaultTableModelTTKH.addColumn("Tên Quận");   
+        defaultTableModelTTKH.addColumn("Tên Quận");
     }
-    
+
     //tab 2
-    private void setTableDataTTCS(List<Sotieuthu> khachHangs){
+    private void setTableDataTTCS(List<Sotieuthu> khachHangs) {
         for (Sotieuthu khachHang : khachHangs) {
             defaultTableModelTTCS.addRow(new Object[]{khachHang.getIdTT(), khachHang.getMaKH(), khachHang.getChisocuDien(), khachHang.getChisomoiDien(), khachHang.getChisocuNuoc(), khachHang.getChisomoiNuoc(), khachHang.getNgayNhap()});
         }
     }
-    private void setColumnTableTTCS(){
+
+    private void setColumnTableTTCS() {
         defaultTableModelTTCS = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -87,8 +89,9 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         defaultTableModelTTCS.addColumn("Chỉ số điện mới");
         defaultTableModelTTCS.addColumn("Chỉ số nước cũ");
         defaultTableModelTTCS.addColumn("Chỉ số nước mới");
-        defaultTableModelTTCS.addColumn("Ngày nhập");  
+        defaultTableModelTTCS.addColumn("Ngày nhập");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -400,7 +403,7 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
 
     private void AddBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtActionPerformed
         // TODO add your handling code here:
-        int i=0, k=0, t=0;
+        int i = 0, k = 0, t = 0;
         String dc1, dc2, dc3, tg1, tg2, loc;
         dc1 = String.valueOf(nhapquan.getSelectedItem());
         dc2 = nhapphuong.getText();
@@ -408,29 +411,29 @@ public class TimKiemvaLoc extends javax.swing.JFrame {
         tg1 = monthL.getText();
         tg2 = yearL.getText();
         loc = String.valueOf(sapxeptheo.getSelectedItem());
-        
-        if(dc1.equals("")== false){
+
+        if (dc1.equals("") == false) {
             i++;
         }
-        if(dc2.equals("")== false){
+        if (dc2.equals("") == false) {
             i++;
         }
-        if(dc3.equals("")== false){
+        if (dc3.equals("") == false) {
             i++;
         }
-        
-        if(tg1.equals("")== false){
+
+        if (tg1.equals("") == false) {
             t++;
         }
-        if(tg2.equals("")== false){
+        if (tg2.equals("") == false) {
             t++;
         }
-        
-        if(loc.equals("")== false){
+
+        if (loc.equals("") == false) {
             k++;
         }
-        
-         
+
+
     }//GEN-LAST:event_AddBtActionPerformed
 
     /**

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static ketnoiSQL.JDBCConnection.getJDBCConnection;
 import net.proteanit.sql.DbUtils;
 
 /*
@@ -20,7 +21,7 @@ import net.proteanit.sql.DbUtils;
  */
 public class QuanLyNhanVien extends javax.swing.JFrame {
 
-    Connection con = null;
+    Connection con = getJDBCConnection();
     Statement st = null;
     ResultSet rs = null;
 
@@ -123,11 +124,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         Clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClearMouseClicked(evt);
-            }
-        });
-        Clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Performed(evt);
             }
         });
 
@@ -359,7 +355,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void DisplayNVInTable() {
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
+
             st = con.createStatement();
             rs = st.executeQuery("Select *from NhanVien");
             BangNhanVien.setModel(DbUtils.resultSetToTableModel(rs));
@@ -367,18 +363,12 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    private void Performed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Performed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_Performed
-
     private void AddBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtMouseClicked
         // TODO add your handling code here:
         if (tennv.getText().isEmpty() || pass.getText().isEmpty() || chucvu.getText().isEmpty() || tennguoidung.getText().isEmpty() || ngaysinh.getText().isEmpty() || dc.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không được để trống! Mời bạn nhập lại!");
         } else {
             try {
-                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
                 PreparedStatement add = con.prepareStatement("Set dateformat dmy insert into NhanVien values (?,?,?,?,?,?,?,?)");
                 add.setString(1, tennv.getText());
                 add.setString(2, tennguoidung.getText());
@@ -404,7 +394,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập mã nhân viên để xóa");
         } else {
             try {
-                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
                 String idnv = manv.getText();
                 String sql = "Delete from NhanVien where MaNV=" + idnv;
                 Statement Add = con.createStatement();
@@ -435,7 +424,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Thieu thong tin");
         } else {
             try {
-                con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;", "mien", "12345");
                 String sql = "Update NhanVien set TenNV=N'" + tennv.getText() + "'" + ",MatKhau=N'" + pass.getText() + "'" + ",GioiTinh=N'" + gt.getSelectedItem().toString() + "'" + ",username=N'" + tennguoidung.getText() + "'" + ",ngaysinh=N'" + ngaysinh.getText() + "'" + ",sdt=N'" + sdt.getText() + "'" + ",chucvu=N'" + chucvu.getText() + "'" + "where MaNV=" + manv.getText();
                 Statement Add = con.createStatement();
                 Add.executeUpdate(sql);
@@ -457,7 +445,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         chucvu.setText("");
         dc.setText("");
         sdt.setText("");
-                
+
     }//GEN-LAST:event_ClearMouseClicked
 
     /**

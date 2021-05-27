@@ -12,13 +12,13 @@ import java.util.logging.Logger;
  * @author PC
  */
 public class KhachHang {
+
     private int maKH;
     private String tenKH, ngaySinh, gioiTinh, sdt, doiTuong, diaChi, tenPhuong, tenQuan;
 
     public int getMaKH() {
         return maKH;
     }
-
 
     public String getTenKH() {
         return tenKH;
@@ -47,7 +47,6 @@ public class KhachHang {
     public void setMaKH(int maKH) {
         this.maKH = maKH;
     }
-
 
     public void setTenKH(String tenKH) {
         this.tenKH = tenKH;
@@ -88,5 +87,5 @@ public class KhachHang {
     public void setTenQuan(String tenQuan) {
         this.tenQuan = tenQuan;
     }
-    
+
 }

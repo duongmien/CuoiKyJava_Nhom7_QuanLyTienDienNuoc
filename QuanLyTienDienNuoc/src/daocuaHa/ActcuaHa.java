@@ -22,6 +22,7 @@ import ketnoiSQL.JDBCConnection;
  * @author PC
  */
 public class ActcuaHa {
+
     public List<KhachHang> getAllKhachHangS(String lenh) {
 
         List<KhachHang> hoadons = new ArrayList<KhachHang>();
@@ -47,6 +48,7 @@ public class ActcuaHa {
         }
         return hoadons;
     }
+
     public List<Sotieuthu> getAllSoTieuThu(String lenh) {
 
         List<Sotieuthu> sotieuthus = new ArrayList<Sotieuthu>();
@@ -71,5 +73,5 @@ public class ActcuaHa {
         }
         return sotieuthus;
     }
-    
+
 }

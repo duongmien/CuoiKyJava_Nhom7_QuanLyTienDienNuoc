@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ketnoiSQL;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,24 +22,22 @@ public class JDBCConnection {
         final String user = "sa";
         final String password = "123456";
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException e) {
         }
         return null;
     }
 
-
     public static void main(String[] args) {
 
         JDBCConnection kn = new JDBCConnection();
 
-        if(kn.getJDBCConnection() != null){
+        if (kn.getJDBCConnection() != null) {
             System.out.println("Thành công");
-        } else{
+        } else {
             System.out.println("Không thành công");
         }
 
     }
 }
-

@@ -10,6 +10,7 @@ package account;
  * @author PC
  */
 public class Sotieuthu {
+
     private int idTT, maKH;
     private float chisocuDien, chisomoiDien, chisocuNuoc, chisomoiNuoc;
     private String ngayNhap;
@@ -69,6 +70,5 @@ public class Sotieuthu {
     public void setNgayNhap(String ngayNhap) {
         this.ngayNhap = ngayNhap;
     }
-    
-    
+
 }

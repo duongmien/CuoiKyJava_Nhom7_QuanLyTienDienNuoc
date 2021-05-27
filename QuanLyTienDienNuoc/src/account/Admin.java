@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * @author PC
  */
 public class Admin {
+
     private int maAdmin;
     private String tenNV, username, gioiTinh, ngaySinh, sdt, diaChi, chucVu, matKhau;
 
@@ -86,6 +87,5 @@ public class Admin {
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
-    
-    
+
 }

@@ -10,6 +10,7 @@ package account;
  * @author PC
  */
 public class NhanVien {
+
     private int maNV;
     private String tenNV, username, gioiTinh, ngaySinh, sdt, diaChi, chucVu, matKhau;
 
