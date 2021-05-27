@@ -7,22 +7,21 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ketnoiSQL.JDBCConnection;
 
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Admin
  */
 public class TinhTienDien extends javax.swing.JFrame {
 
-    /** Creates new form TinhTienDien */
-     DefaultTableModel tblModel = new DefaultTableModel() {
+    /**
+     * Creates new form TinhTienDien
+     */
+    DefaultTableModel tblModel = new DefaultTableModel() {
         public boolean isCellEditable(int row, int column) {
             return false; //To change body of generated methods, choose Tools | Templates.
         }
@@ -34,7 +33,6 @@ public class TinhTienDien extends javax.swing.JFrame {
 
     public TinhTienDien() {
         initComponents();
-        initComponents();
         tblModel.addColumn("Mã Tiêu thụ");
         tblModel.addColumn("Mã khách hàng");
         tblModel.addColumn("Tên khách hàng");
@@ -45,7 +43,8 @@ public class TinhTienDien extends javax.swing.JFrame {
         tblCSD.setModel(tblModel);
         ReloadTbl();
     }
-public void ReloadTbl() {
+
+    public void ReloadTbl() {
         tblModel.getDataVector().removeAllElements();
         //select theo khách hàng VIP
         try {
@@ -494,7 +493,7 @@ public void ReloadTbl() {
         btnXuatHD.setEnabled(true);
         txtCSDM.setText("");
         txtCSNM.setText("");
-        
+
     }//GEN-LAST:event_tblCSDMouseClicked
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
@@ -510,33 +509,32 @@ public void ReloadTbl() {
                     JOptionPane.showMessageDialog(this, "Chỉ số điện mới phải là số và lớn hơn 0");
                     txtCSDM.grabFocus();
                     return;
-                } else if ((Double.parseDouble(txtCSDM.getText())) <(Double.parseDouble(txtCSDC.getText()))) {
+                } else if ((Double.parseDouble(txtCSDM.getText())) < (Double.parseDouble(txtCSDC.getText()))) {
                     JOptionPane.showMessageDialog(this, "Chỉ số điện mới phải lớn hơn chỉ số điện cũ");
                     txtCSDM.grabFocus();
                     return;
-                }else {
+                } else {
                     break;
                 }
             }
             try {
 
-               
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        try {
-            ps = connect.prepareStatement("update tblSotieuthu set chisocuDien =?,chisocuNuoc =? where IdTT=?");
-            
-            ps.setString(3, txtMTT.getText());
-            ps.setString(1, txtCSDM.getText());
-            ps.setString(2, txtCSNM.getText());           
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Lưu thành công ! ");
-            tblModel.getDataVector().removeAllElements();
-            ReloadTbl();
-            
-        } catch (Exception e) {
-        }
+            try {
+                ps = connect.prepareStatement("update tblSotieuthu set chisocuDien =?,chisocuNuoc =? where IdTT=?");
+
+                ps.setString(3, txtMTT.getText());
+                ps.setString(1, txtCSDM.getText());
+                ps.setString(2, txtCSNM.getText());
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Lưu thành công ! ");
+                tblModel.getDataVector().removeAllElements();
+                ReloadTbl();
+
+            } catch (Exception e) {
+            }
 
         }
     }//GEN-LAST:event_btnLuuActionPerformed
