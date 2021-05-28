@@ -2,6 +2,10 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 import ketnoiSQL.JDBCConnection;
 
 /*
@@ -22,13 +26,21 @@ public class HoaDon extends javax.swing.JFrame {
     PreparedStatement ps;
     ResultSet rs, rsKH;
     Connection connect = JDBCConnection.getJDBCConnection();
-    
+    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat dateFormat3 = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+    java.util.Date date = new java.util.Date();
+    java.util.Date date2 = new java.util.Date();
+     Calendar cal;
     public HoaDon(String makh) {
         initComponents();
+        Double tongtien;
+        
         try {
             ps=connect.prepareStatement("select tblHoaDon.MaKH,KhachHang.tenKH,KhachHang.DiaChi,KhachHang.TenPhuong,KhachHang.TenQuan,KhachHang.SDT,tblSotieuthu.*,tblHoaDon.*\n" +
 "from tblHoaDon,tblSotieuthu,KhachHang\n" +
-"where tblHoaDon.MaKH=tblSotieuthu.MaKH and tblSotieuthu.MaKH=KhachHang.MaKH and tblHoaDon.ngayTaoHD=convert(varchar, getdate(), 111) and tblHoaDon.MaKH=1");
+"where tblHoaDon.MaKH=tblSotieuthu.MaKH and tblSotieuthu.MaKH=KhachHang.MaKH and tblHoaDon.ngayTaoHD=convert(varchar, getdate(), 111) and tblHoaDon.MaKH=?");
+            ps.setString(1, makh);
             rs = ps.executeQuery();
             while(rs.next()){
                 txtMaKH.setText(rs.getString("MaKH"));
@@ -36,18 +48,21 @@ public class HoaDon extends javax.swing.JFrame {
                 txtDiaChi.setText(rs.getString("TenPhuong")+", "+rs.getString("TenQuan"));
                 txtSDT.setText(rs.getString("SDT"));
                 txtDiachiSD.setText(rs.getString("DiaChi"));
-                txtCSDC.setText(rs.getString(""));
-                txtCSDM.setText(rs.getString("chisocuDien "));
-                txtCSNM.setText(rs.getString(""));
-                txtCSNC.setText(rs.getString(""));
-                txtTTD.setText(rs.getString(""));
-                txtTTN.setText(rs.getString(""));
-                txtTienDien.setText(rs.getString(""));
-                txtTienNuoc.setText(rs.getString(""));
-            //    txt.setText(rs.getString(""));
-             //   txt.setText(rs.getString(""));
-              //  txt.setText(rs.getString(""));
-                
+                txtCSDC.setText(rs.getString("chisocuDien"));
+                txtCSDM.setText(rs.getString("chisomoiDien"));
+                txtCSNM.setText(rs.getString("chisomoiNuoc"));
+                CSNC.setText(rs.getString("chisocuNuoc"));
+                txtTTD.setText(rs.getString("SoTieuThuDien"));
+                txtTTN.setText(rs.getString("SoTieuThuNuoc"));
+                txtTienDien.setText(rs.getString("TongTienDien"));
+                txtTienNuoc.setText(rs.getString("TongTienNuoc"));
+                date = dateFormat2.parse(rs.getString("ngayTaoHD"));
+                cal = Calendar.getInstance();
+                cal.setTime(dateFormat3.parse(date.toString()));
+                cal.add(Calendar.DATE, 15); 
+                txtHanTT.setText(dateFormat.format(cal.getTime()).toString());
+                tongtien=Double.parseDouble(txtTienDien.getText())+(Double.parseDouble(txtTienNuoc.getText()));
+                txtTongtienTT.setText(tongtien.toString()+" VND");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -65,7 +80,7 @@ public class HoaDon extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txtTienNuoc = new javax.swing.JTextField();
-        txtCSNC = new javax.swing.JTextField();
+        CSNC = new javax.swing.JTextField();
         txtTTN = new javax.swing.JTextField();
         txtTienDien = new javax.swing.JTextField();
         jProgressBar5 = new javax.swing.JProgressBar();
@@ -108,6 +123,7 @@ public class HoaDon extends javax.swing.JFrame {
         txtTTD = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        txtTongtienTT = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,8 +132,8 @@ public class HoaDon extends javax.swing.JFrame {
         txtTienNuoc.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTienNuoc.setEnabled(false);
 
-        txtCSNC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCSNC.setEnabled(false);
+        CSNC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        CSNC.setEnabled(false);
 
         txtTTN.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTTN.setEnabled(false);
@@ -151,6 +167,7 @@ public class HoaDon extends javax.swing.JFrame {
         txtTenKH.setEnabled(false);
 
         jLabel2.setBackground(new java.awt.Color(255, 102, 102));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs_QLTD/logo2.jpg"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("TỔNG CÔNG TY ĐIỆN LỰC MIỀN TRUNG");
@@ -195,7 +212,7 @@ public class HoaDon extends javax.swing.JFrame {
                 .addGap(49, 49, 49))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -204,7 +221,7 @@ public class HoaDon extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel35)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 7, Short.MAX_VALUE)
+                .addComponent(txtMaKH, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -314,6 +331,10 @@ public class HoaDon extends javax.swing.JFrame {
             .addGap(0, 6, Short.MAX_VALUE)
         );
 
+        txtTongtienTT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTongtienTT.setForeground(new java.awt.Color(255, 102, 0));
+        txtTongtienTT.setText("10000 VND");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -350,7 +371,7 @@ public class HoaDon extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCSDC, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCSNC, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(CSNC, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(50, 50, 50)
@@ -363,10 +384,14 @@ public class HoaDon extends javax.swing.JFrame {
                                 .addGap(50, 50, 50)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTienNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTienDien, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(159, 159, 159)
-                                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtTienDien, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(55, 55, 55)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(34, 34, 34)
+                                                .addComponent(txtTongtienTT)))))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(143, 143, 143))
@@ -479,16 +504,18 @@ public class HoaDon extends javax.swing.JFrame {
                             .addComponent(txtCSDM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCSDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTTD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(15, 15, 15)
                         .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
                             .addComponent(txtCSNM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCSNC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CSNC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTTN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTienNuoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtTienDien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTienDien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTongtienTT)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -509,39 +536,10 @@ public class HoaDon extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HoaDon("1").setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CSNC;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -575,7 +573,6 @@ public class HoaDon extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar5;
     private javax.swing.JTextField txtCSDC;
     private javax.swing.JTextField txtCSDM;
-    private javax.swing.JTextField txtCSNC;
     private javax.swing.JTextField txtCSNM;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtDiachiSD;
@@ -587,5 +584,6 @@ public class HoaDon extends javax.swing.JFrame {
     private javax.swing.JTextField txtTenKH;
     private javax.swing.JTextField txtTienDien;
     private javax.swing.JTextField txtTienNuoc;
+    private javax.swing.JLabel txtTongtienTT;
     // End of variables declaration//GEN-END:variables
 }
