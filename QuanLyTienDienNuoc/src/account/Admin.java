@@ -14,14 +14,14 @@ import java.util.logging.Logger;
 public class Admin {
 
     private int maAdmin;
-    private String tenNV, username, gioiTinh, ngaySinh, sdt, diaChi, chucVu, matKhau;
+    private String tenAdmin, username, gioiTinh, ngaySinh, sdt, diaChi, chucVu, matKhau;
 
     public int getMaAdmin() {
         return maAdmin;
     }
 
-    public String getTenNV() {
-        return tenNV;
+    public String getTenAdmin() {
+        return tenAdmin;
     }
 
     public String getUsername() {
@@ -56,8 +56,8 @@ public class Admin {
         this.maAdmin = maAdmin;
     }
 
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
+    public void setTenAdmin(String tenAdmin) {
+        this.tenAdmin = tenAdmin;
     }
 
     public void setUsername(String username) {
