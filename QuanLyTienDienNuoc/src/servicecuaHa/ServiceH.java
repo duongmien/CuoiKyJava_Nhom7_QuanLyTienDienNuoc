@@ -5,6 +5,7 @@
  */
 package servicecuaHa;
 
+import account.HoaDon;
 import account.KhachHang;
 import account.Sotieuthu;
 import daocuaHa.ActcuaHa;
@@ -30,5 +31,10 @@ public class ServiceH {
     //Số tiêu thụ
     public List<Sotieuthu> getAllSoTieuThu(String lenh) {
         return ActH.getAllSoTieuThu(lenh);
+    }
+    
+    //HoaDon
+    public List<HoaDon> getAllHoaDon(String lenh) {
+        return ActH.getAllHoaDons(lenh);
     }
 }

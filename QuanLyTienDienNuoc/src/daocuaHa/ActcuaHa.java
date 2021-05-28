@@ -5,6 +5,7 @@
  */
 package daocuaHa;
 
+import account.HoaDon;
 import account.KhachHang;
 import account.Sotieuthu;
 import java.sql.Connection;
@@ -66,6 +67,28 @@ public class ActcuaHa {
                 hoaDon.setChisocuNuoc(rs.getFloat("chisocuNuoc"));
                 hoaDon.setChisomoiNuoc(rs.getFloat("chisomoiNuoc"));
                 hoaDon.setNgayNhap(rs.getString("ngayNhap"));
+                sotieuthus.add(hoaDon);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sotieuthus;
+    }
+    
+    public List<HoaDon> getAllHoaDons(String lenh) {
+
+        List<HoaDon> sotieuthus = new ArrayList<HoaDon>();
+        Connection cnt = JDBCConnection.getJDBCConnection();
+        String sql = lenh;
+        try {
+            PreparedStatement preparedStatement = cnt.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                HoaDon hoaDon = new HoaDon();
+                
+                hoaDon.setNgaytao(rs.getString("ngaytao"));
+                hoaDon.setTenquan(rs.getString("tenquan"));
+                hoaDon.setTong(rs.getDouble("tong"));
                 sotieuthus.add(hoaDon);
             }
         } catch (SQLException e) {
