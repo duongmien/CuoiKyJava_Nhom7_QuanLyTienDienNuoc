@@ -53,7 +53,7 @@ public class TinhTienDien extends javax.swing.JFrame {
         tblModel.getDataVector().removeAllElements();
         //select theo khách hàng VIP
         try {
-            ps = connect.prepareStatement("select IdTT,tblSotieuthu.MaKH,TenKH,DiaChi,SDT,chisocuDien,chisocuNuoc from tblSotieuthu join KhachHang on KhachHang.MaKH=tblSotieuthu.MaKH  ");
+            ps = connect.prepareStatement("select IdTT,tblSotieuthu.MaKH,TenKH,DiaChi,SDT,chisomoiDien,chisomoiNuoc from tblSotieuthu join KhachHang on KhachHang.MaKH=tblSotieuthu.MaKH  ");
             rs = ps.executeQuery();
             while (rs.next()) {
                 vec = new Vector();
@@ -62,8 +62,8 @@ public class TinhTienDien extends javax.swing.JFrame {
                 vec.add(rs.getString("TenKH"));
                 vec.add(rs.getString("DiaChi"));
                 vec.add(rs.getString("SDT"));
-                vec.add(rs.getDouble("chisocuDien"));
-                vec.add(rs.getDouble("chisocuNuoc"));
+                vec.add(rs.getDouble("chisomoiDien"));
+                vec.add(rs.getDouble("chisomoiNuoc"));
                 tblModel.addRow(vec);
             }
             tblCSD.setModel(tblModel);
@@ -621,10 +621,12 @@ public class TinhTienDien extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e);
             }
             try {
-                ps = connect.prepareStatement("update tblSotieuthu set chisocuDien =?,chisocuNuoc =? where IdTT=?");
-                ps.setString(3, txtMTT.getText());
-                ps.setString(1, txtCSDM.getText());
-                ps.setString(2, txtCSNM.getText());
+                ps = connect.prepareStatement("update tblSotieuthu set chisocuDien =?,chisocuNuoc =?,chisomoiDien =?,chisomoiNuoc =? where IdTT=?");
+                ps.setString(5, txtMTT.getText());
+                ps.setString(3, txtCSDM.getText());
+                ps.setString(4, txtCSNM.getText());
+                ps.setString(1, txtCSDC.getText());
+                ps.setString(2, txtCSNC.getText());
                 ps.executeUpdate();
                 ps = connect.prepareStatement("insert into tblHoaDon values(?,?,?,?,?,?,convert(varchar, getdate(), 111))");
                 ps.setString(1, txtMKH.getText());

@@ -112,3 +112,16 @@ Insert into tblHoaDon values(2,N'An Miên',300,50,68000,42000,'2021-5-26')
 Insert into tblHoaDon values(3,N'Khánh Hạ',300,50,103000,100000,'2021-5-26')
 Insert into tblHoaDon values(4,N'Thùy Linh',300,50,54000,25000,'2021-5-26')
 Insert into tblHoaDon values(5,N'Hoàng Linh',300,50,96000,20000,'2021-5-26')
+
+--Hạ insert table HoaDon va SoTieuThu 28/05/2021
+Insert into tblSotieuthu values(1,180,330,148,150,'2021-6-26')
+Insert into tblSotieuthu values(2,129,280,200,250,'2021-6-26')
+Insert into tblSotieuthu values(3,163,350,78,110,'2021-6-26')
+Insert into tblSotieuthu values(4,190,380,138,150,'2021-6-26')
+Insert into tblSotieuthu values(5,80,260,168,280,'2021-6-26')
+
+Insert into tblHoaDon values(1,N'Hồng Sơn',150,12,278700,75600,'2021-6-26')
+Insert into tblHoaDon values(2,N'An Miên',151,50,280558,605000,'2021-6-26')
+Insert into tblHoaDon values(3,N'Khánh Hạ',187,31,347446,195300,'2021-6-26')
+Insert into tblHoaDon values(4,N'Thùy Linh',190,12,353202,75600,'2021-6-26')
+Insert into tblHoaDon values(5,N'Hoàng Linh',180,12,334440,75600,'2021-6-26')

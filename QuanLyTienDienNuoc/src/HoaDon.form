@@ -80,7 +80,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel26" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                                       <Component id="txtCSDC" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Component id="txtCSNC" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                                      <Component id="CSNC" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
@@ -98,10 +98,16 @@
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txtTienNuoc" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
-                                      <Component id="txtTienDien" alignment="0" min="-2" pref="104" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
-                                          <Component id="jLabel30" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <Component id="txtTienDien" min="-2" pref="104" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel30" min="-2" pref="139" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                                  <Component id="txtTongtienTT" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -248,18 +254,21 @@
                               <Component id="txtCSDC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTTD" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jProgressBar5" min="-2" pref="9" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCSNM" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCSNC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="CSNC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTienNuoc" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="txtTienDien" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtTienDien" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTongtienTT" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
@@ -275,7 +284,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCSNC">
+        <Component class="javax.swing.JTextField" name="CSNC">
           <Properties>
             <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -373,6 +382,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="ff" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imgs_QLTD/logo2.jpg"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -456,7 +468,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                      <Component id="txtMaKH" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="txtMaKH" min="-2" pref="15" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -467,7 +479,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMaKH" pref="7" max="32767" attributes="0"/>
+                      <Component id="txtMaKH" pref="18" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -723,6 +735,17 @@
             </DimensionLayout>
           </Layout>
         </Container>
+        <Component class="javax.swing.JLabel" name="txtTongtienTT">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="66" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="10000 VND"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
