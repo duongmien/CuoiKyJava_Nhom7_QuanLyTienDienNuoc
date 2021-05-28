@@ -805,6 +805,7 @@ public class TinhTienDien extends javax.swing.JFrame {
     }
     private void btnXuatHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatHDActionPerformed
         // TODO add your handling code here:
+        new HoaDon(txtMKH.getText()).setVisible(true);
     }//GEN-LAST:event_btnXuatHDActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
