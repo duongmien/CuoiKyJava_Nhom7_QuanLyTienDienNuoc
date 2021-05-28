@@ -17,15 +17,15 @@ import java.util.logging.Logger;
  */
 public class JDBCConnection {
 
-    public static Connection getJDBCConnection() {
-
-        final String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;";
-        final String user = "mien";
-        final String password = "12345";
+public static Connection getJDBCConnection() {
+        final String url = "jdbc:sqlserver://ADMIN\\SQLEXPRESS:1433;databasename=QuanLyTienDienNuoc";
+        final String user = "son_46";
+        final String password = "123456";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
         return null;
 
