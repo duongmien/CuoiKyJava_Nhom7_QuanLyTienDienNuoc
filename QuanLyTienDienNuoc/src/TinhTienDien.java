@@ -68,13 +68,6 @@ public class TinhTienDien extends javax.swing.JFrame {
             }
             tblCSD.setModel(tblModel);
             btnLuu.setEnabled(false);
-            btnXuatHD.setEnabled(false);
-            txtCSDM.setText("");
-            txtCSNM.setText("");
-            txtSTTD.setText("");
-            txtSTTN.setText("");
-            txtTienDien.setText("");
-            txtTienNuoc.setText("");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -148,6 +141,7 @@ public class TinhTienDien extends javax.swing.JFrame {
             }
         });
 
+        txtCSDM.setEnabled(false);
         txtCSDM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCSDMActionPerformed(evt);
@@ -159,6 +153,7 @@ public class TinhTienDien extends javax.swing.JFrame {
         LB1.setForeground(new java.awt.Color(255, 102, 51));
         LB1.setText("TÍNH TIỀN ĐIỆN");
 
+        txtCSNM.setEnabled(false);
         txtCSNM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCSNMActionPerformed(evt);
@@ -601,10 +596,17 @@ public class TinhTienDien extends javax.swing.JFrame {
         txtSDT.setText(SDT);
         txtCSDC.setText(chisocuDien);
         txtCSNC.setText(chisocuNuoc);
-        btnXuatHD.setEnabled(true);
         btnTinhTien.setEnabled(true);
+        btnLuu.setEnabled(false);
+        btnXuatHD.setEnabled(false);
+        txtCSDM.setEnabled(true);
+        txtCSNM.setEnabled(true);
         txtCSDM.setText("");
         txtCSNM.setText("");
+        txtSTTD.setText("");
+        txtSTTN.setText("");
+        txtTienDien.setText("");
+        txtTienNuoc.setText("");
 
     }//GEN-LAST:event_tblCSDMouseClicked
 
@@ -612,23 +614,7 @@ public class TinhTienDien extends javax.swing.JFrame {
         // TODO add your handling code here:
         int click = JOptionPane.showConfirmDialog(null, "Bạn có muốn lưu không?");
         if (click == 0) {
-            while (true) {
-                if (txtCSDM.getText().trim().equals("")) {
-                    JOptionPane.showMessageDialog(this, "Chỉ số điện mới không được để trống");
-                    txtCSDM.grabFocus();
-                    return;
-                } else if (!txtCSDM.getText().trim().matches("[0-9]+")) {
-                    JOptionPane.showMessageDialog(this, "Chỉ số điện mới phải là số và lớn hơn 0");
-                    txtCSDM.grabFocus();
-                    return;
-                } else if ((Double.parseDouble(txtCSDM.getText())) < (Double.parseDouble(txtCSDC.getText()))) {
-                    JOptionPane.showMessageDialog(this, "Chỉ số điện mới phải lớn hơn chỉ số điện cũ");
-                    txtCSDM.grabFocus();
-                    return;
-                } else {
-                    break;
-                }
-            }
+
             try {
 
             } catch (Exception e) {
@@ -640,20 +626,20 @@ public class TinhTienDien extends javax.swing.JFrame {
                 ps.setString(1, txtCSDM.getText());
                 ps.setString(2, txtCSNM.getText());
                 ps.executeUpdate();
-                ps = connect.prepareStatement("insert into SanPham values(?,?,?,?,?,?,?)");
+                ps = connect.prepareStatement("insert into tblHoaDon values(?,?,?,?,?,?,convert(varchar, getdate(), 111))");
                 ps.setString(1, txtMKH.getText());
                 ps.setString(2, txtTenKH.getText());
                 ps.setString(3, txtSTTD.getText());
                 ps.setString(4, txtSTTN.getText());
                 ps.setString(5, txtTienDien.getText());
                 ps.setString(6, txtTienNuoc.getText());
-                ps.setString(7, txtNgayNhap.getText());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Lưu thành công ! ");
                 tblModel.getDataVector().removeAllElements();
                 ReloadTbl();
-
+                btnXuatHD.setEnabled(true);
             } catch (Exception e) {
+                System.out.println(e);
             }
 
         }
@@ -763,7 +749,7 @@ public class TinhTienDien extends javax.swing.JFrame {
         txtCSNM.setEnabled(false);
     }//GEN-LAST:event_btnTinhTienActionPerformed
     public String TinhTienDien(Double csd) {
-        Double t=0.0;
+        Double t = 0.0;
         int i = 0;
         Double giadien[] = new Double[10];
         try {
@@ -773,34 +759,29 @@ public class TinhTienDien extends javax.swing.JFrame {
                 giadien[i] = Double.parseDouble(rs.getString("giaDien"));
                 i += 1;
             }
-            
+
         } catch (Exception e) {
 
         }
-        if (csd<=50){
-            t=csd*giadien[0];
+        if (csd <= 50) {
+            t = csd * giadien[0];
+        } else if (csd <= 100) {
+            t = 50 * giadien[0] + (csd - 50) * giadien[1];
+        } else if (csd <= 200) {
+            t = 50 * giadien[0] + 50 * giadien[1] + (csd - 100) * giadien[2];
+        } else if (csd <= 300) {
+            t = 50 * giadien[0] + 50 * giadien[1] + (100) * giadien[2] + (csd - 200) * giadien[3];
+        } else if (csd <= 400) {
+            t = 50 * giadien[0] + 50 * giadien[1] + (100) * giadien[2] + (100) * giadien[3] + (csd - 300) * giadien[4];
+        } else if (csd > 400) {
+            t = 50 * giadien[0] + 50 * giadien[1] + (100) * giadien[2] + (100) * giadien[3] + (100) * giadien[4] + (csd - 400) * giadien[5];
         }
-        else if(csd<=100){
-            t=50 * giadien[0]+(csd-50)*giadien[1];
-        }
-        else if(csd<=200){
-            t=50 * giadien[0]+50*giadien[1]+(csd-100)*giadien[2] ;
-        }
-        else if(csd<=300){
-            t=50 * giadien[0]+50*giadien[1]+(100)*giadien[2] + (csd-200)*giadien[3] ;
-        }
-        else if(csd<=400){
-            t=50 * giadien[0]+50*giadien[1]+(100)*giadien[2] + (100)*giadien[3]+(csd-300)*giadien[4] ;
-        }
-        else if(csd>400){
-            t=50 * giadien[0]+50*giadien[1]+(100)*giadien[2] + (100)*giadien[3]+(100)*giadien[4]+(csd-400)*giadien[5];
-        }
-            
+
         return t.toString();
     }
 
     public String TinhTienNuoc(Double csn) {
-        Double t=0.0;
+        Double t = 0.0;
         int i = 0;
         Double giaNuoc[] = new Double[10];
         try {
@@ -809,19 +790,17 @@ public class TinhTienDien extends javax.swing.JFrame {
             while (rs.next()) {
                 giaNuoc[i] = Double.parseDouble(rs.getString("giaNuoc"));
                 i += 1;
-            }            
+            }
         } catch (Exception e) {
         }
-        if (csn<=4){
-            t=csn*giaNuoc[0];
+        if (csn <= 4) {
+            t = csn * giaNuoc[0];
+        } else if (csn <= 6) {
+            t = 4 * giaNuoc[0] + (csn - 4) * giaNuoc[1];
+        } else if (csn > 6) {
+            t = 4 * giaNuoc[0] + 2 * giaNuoc[1] + (csn - 6) * giaNuoc[2];
         }
-        else if(csn<=6){
-            t=4 * giaNuoc[0]+(csn-4)*giaNuoc[1];
-        }
-        else if(csn>6){
-            t=4* giaNuoc[0]+2*giaNuoc[1]+(csn-6)*giaNuoc[2] ;
-        }
-        
+
         return t.toString();
     }
     private void btnXuatHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatHDActionPerformed
@@ -830,6 +809,23 @@ public class TinhTienDien extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        ReloadTbl();
+        txtMTT.setText("");
+        txtMKH.setText("");
+        txtTenKH.setText("");
+        txtDiaChi.setText("");
+        txtSDT.setText("");
+        txtCSDC.setText("");
+        txtCSNC.setText("");
+        txtCSDM.setText("");
+        txtCSNM.setText("");
+        txtSTTD.setText("");
+        txtSTTN.setText("");
+        txtTienDien.setText("");
+        txtTienNuoc.setText("");
+        btnTinhTien.setEnabled(false);
+        btnLuu.setEnabled(false);
+        btnXuatHD.setEnabled(false);
     }//GEN-LAST:event_btnResetActionPerformed
 
     /**

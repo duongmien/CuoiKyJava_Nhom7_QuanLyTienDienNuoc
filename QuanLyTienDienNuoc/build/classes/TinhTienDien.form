@@ -304,6 +304,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCSDM">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCSDMActionPerformed"/>
               </Events>
@@ -323,6 +326,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCSNM">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCSNMActionPerformed"/>
               </Events>
