@@ -94,7 +94,7 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("M:\\HK220\\CuoiKyThayQuang\\Imgs\\bóng đèn.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs_QLTD/bóng đèn.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -156,7 +156,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 51));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("M:\\HK220\\CuoiKyThayQuang\\Imgs\\sale.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs_QLTD/sale.png"))); // NOI18N
         jLabel8.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

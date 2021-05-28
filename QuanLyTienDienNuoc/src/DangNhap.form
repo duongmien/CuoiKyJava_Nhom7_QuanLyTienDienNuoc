@@ -232,7 +232,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="M:\HK220\CuoiKyThayQuang\Imgs\b&#xf3;ng &#x111;&#xe8;n.png"/>
+              <Image iconType="3" name="/Imgs_QLTD/b&#xf3;ng &#x111;&#xe8;n.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
@@ -272,7 +272,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="M:\HK220\CuoiKyThayQuang\Imgs\sale.png"/>
+              <Image iconType="3" name="/Imgs_QLTD/sale.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel8"/>
           </Properties>
