@@ -234,7 +234,7 @@ public class TrangChuNhanVien extends javax.swing.JFrame {
     private void tkdtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tkdtMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new ThongKe().setVisible(true);
+        new ThongKeForm().setVisible(true);
     }//GEN-LAST:event_tkdtMouseClicked
 
     private void tkdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkdtActionPerformed
