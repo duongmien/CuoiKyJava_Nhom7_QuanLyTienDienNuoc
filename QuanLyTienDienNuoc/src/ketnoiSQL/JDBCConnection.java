@@ -19,8 +19,8 @@ public class JDBCConnection {//QuanLyTienDienNuoc
 
 public static Connection getJDBCConnection() {
         final String url = "jdbc:sqlserver://localhost:1433;databasename=QuanLyTienDienNuoc;";
-        final String user = "sa";
-        final String password = "123456";
+        final String user = "mien";
+        final String password = "12345";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return DriverManager.getConnection(url, user, password);
