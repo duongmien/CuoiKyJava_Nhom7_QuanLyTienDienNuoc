@@ -7,6 +7,7 @@ package daocuaHa;
 
 import account.HoaDon;
 import account.KhachHang;
+import account.KhachHangTK;
 import account.Sotieuthu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -89,6 +90,29 @@ public class ActcuaHa {
                 hoaDon.setNgaytao(rs.getString("ngaytao"));
                 hoaDon.setTenquan(rs.getString("tenquan"));
                 hoaDon.setTong(rs.getDouble("tong"));
+                sotieuthus.add(hoaDon);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sotieuthus;
+    }
+    
+    public List<KhachHangTK> getAllKH(String lenh) {
+
+        List<KhachHangTK> sotieuthus = new ArrayList<KhachHangTK>();
+        Connection cnt = JDBCConnection.getJDBCConnection();
+        String sql = lenh;
+        try {
+            PreparedStatement preparedStatement = cnt.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                KhachHangTK hoaDon = new KhachHangTK();
+                
+                hoaDon.setNgaytao(rs.getString("ngaytao"));
+                hoaDon.setTenkh(rs.getString("tenkh"));
+                hoaDon.setTong(rs.getDouble("tong"));
+                hoaDon.setMakh(rs.getInt("makh"));
                 sotieuthus.add(hoaDon);
             }
         } catch (SQLException e) {

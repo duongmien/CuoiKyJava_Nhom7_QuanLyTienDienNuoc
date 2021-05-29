@@ -1,5 +1,6 @@
 
 import account.HoaDon;
+import account.KhachHangTK;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import servicecuaHa.ServiceH;
@@ -17,6 +18,7 @@ public class ThongKe extends javax.swing.JFrame {
 
     ServiceH serviceH;
     DefaultTableModel defaultTableModelTTKH;
+    DefaultTableModel defaultTableModel;
     DefaultTableModel defaultTableModelTK;
     String lenh;
 
@@ -32,7 +34,7 @@ public class ThongKe extends javax.swing.JFrame {
                 return false;
             }
         };
-        tableChiTiet.setModel(defaultTableModelTTKH);
+        tableChiTiet1.setModel(defaultTableModelTTKH);
 
         defaultTableModelTTKH.addColumn("Ngày Tạo");
         defaultTableModelTTKH.addColumn("Tên Quận");
@@ -40,6 +42,22 @@ public class ThongKe extends javax.swing.JFrame {
         
         lenh = "select ngaytao, tenquan, sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select ngaytaohd as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd group by tenquan, ngaytao";
         setDataThongKe3(serviceH.getAllHoaDon(lenh));
+        
+        defaultTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tableChiTiet2.setModel(defaultTableModel);
+
+        defaultTableModel.addColumn("Mã KH");
+        defaultTableModel.addColumn("Ngày Tạo");
+        defaultTableModel.addColumn("Tên Khách Hàng");
+        defaultTableModel.addColumn("Tổng Tiêu Thụ");
+        
+        lenh = "select ngaytao , kh.tenkh, kh.makh, sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select ngaytaohd as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd group by ngaytao , kh.tenkh, kh.makh";
+        setDataThongKe4(serviceH.getAllKH(lenh));
         
         defaultTableModelTK = new DefaultTableModel() {
             @Override
@@ -68,6 +86,12 @@ public class ThongKe extends javax.swing.JFrame {
             defaultTableModelTTKH.addRow(new Object[]{khachHang.getNgaytao(), khachHang.getTenquan(), khachHang.getTong()});
         }
     }
+    
+    private void setDataThongKe4(List<KhachHangTK> khachHangs) {
+        for (KhachHangTK khachHang : khachHangs) {
+            defaultTableModel.addRow(new Object[]{khachHang.getMakh(), khachHang.getNgaytao(), khachHang.getTenkh(), khachHang.getTong()});
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,11 +109,19 @@ public class ThongKe extends javax.swing.JFrame {
         dsThongKe = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableTongTien = new javax.swing.JTable();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tableChiTiet = new javax.swing.JTable();
+        tableChiTiet1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableChiTiet2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jLabel1 = new javax.swing.JLabel();
         back2 = new javax.swing.JButton();
+=======
+>>>>>>> cb51b605288eabb06647c9a58c3570de025b8b72
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,7 +144,7 @@ public class ThongKe extends javax.swing.JFrame {
         });
 
         dsThongKe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        dsThongKe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thành Phố Đà Nẵng", "Thống Kê Theo Tháng", "Thống Kê Theo Năm", " ", " " }));
+        dsThongKe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thống Kê Theo Tháng", "Thống Kê Theo Năm", " ", " " }));
         dsThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dsThongKeActionPerformed(evt);
@@ -137,7 +169,7 @@ public class ThongKe extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableTongTien);
 
-        tableChiTiet.setModel(new javax.swing.table.DefaultTableModel(
+        tableChiTiet1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -148,12 +180,52 @@ public class ThongKe extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(tableChiTiet);
+        jScrollPane4.setViewportView(tableChiTiet1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab1", jPanel1);
+
+        tableChiTiet2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tableChiTiet2);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab2", jPanel2);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(143, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,19 +241,35 @@ public class ThongKe extends javax.swing.JFrame {
                 .addGap(164, 164, 164)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+=======
+>>>>>>> cb51b605288eabb06647c9a58c3570de025b8b72
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(291, 291, 291)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                .addComponent(dsThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                .addComponent(ClearTK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(108, 108, 108)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(123, 123, 123))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel12)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(24, 24, 24)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(dsThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,6 +279,7 @@ public class ThongKe extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
+<<<<<<< HEAD
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs_QLTD/tien.png"))); // NOI18N
 
         back2.setBackground(new java.awt.Color(255, 255, 255));
@@ -201,6 +290,8 @@ public class ThongKe extends javax.swing.JFrame {
             }
         });
 
+=======
+>>>>>>> cb51b605288eabb06647c9a58c3570de025b8b72
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -210,6 +301,7 @@ public class ThongKe extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addGap(842, 842, 842))
             .addGroup(jPanel8Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addContainerGap()
@@ -218,6 +310,9 @@ public class ThongKe extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(back2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+=======
+                .addGap(157, 157, 157)
+>>>>>>> cb51b605288eabb06647c9a58c3570de025b8b72
                 .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(49, 49, 49))
         );
@@ -227,6 +322,7 @@ public class ThongKe extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,6 +332,10 @@ public class ThongKe extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(back2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(73, 73, 73))))
+=======
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+>>>>>>> cb51b605288eabb06647c9a58c3570de025b8b72
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +346,11 @@ public class ThongKe extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
+            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> cb51b605288eabb06647c9a58c3570de025b8b72
         );
 
         pack();
@@ -264,11 +368,6 @@ public class ThongKe extends javax.swing.JFrame {
         // TODO add your handling code here:
         String loai = String.valueOf(dsThongKe.getSelectedItem());
         switch (loai) {
-            case "Thành Phố Đà Nẵng":
-                lenh = "select ngaytao, ngaytao as tenquan,sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, (select ngaytaohd as ngaytao, idhd from tblhoadon) as tam  where  tam.idhd=hd.idhd group by ngaytao";
-                defaultTableModelTK.setRowCount(0);
-                setDataThongKe2(serviceH.getAllHoaDon(lenh));
-                break;
             case "Thống Kê Theo Tháng":
                 lenh = "select ngaytao, ngaytao as tenquan,sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, (select concat(month(ngaytaohd),'/',year(ngaytaohd)) as ngaytao, idhd from tblhoadon) as tam  where  tam.idhd=hd.idhd group by ngaytao";
                 defaultTableModelTK.setRowCount(0);
@@ -288,20 +387,23 @@ public class ThongKe extends javax.swing.JFrame {
         String tg = String.valueOf(tableTongTien.getValueAt(row, 0));
         String loai = String.valueOf(dsThongKe.getSelectedItem());
         switch (loai) {
-            case "Thành Phố Đà Nẵng":
-                lenh = "select ngaytao, tenquan, sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select ngaytaohd as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd and ngaytao = '"+tg+"' group by tenquan, ngaytao";
-                defaultTableModelTTKH.setRowCount(0);
-                setDataThongKe3(serviceH.getAllHoaDon(lenh));
-                break;
             case "Thống Kê Theo Tháng":
                 lenh = "select ngaytao, tenquan, sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select concat(month(ngaytaohd),'/',year(ngaytaohd)) as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd and ngaytao = '"+tg+"' group by tenquan, ngaytao ";
                 defaultTableModelTTKH.setRowCount(0);
                 setDataThongKe3(serviceH.getAllHoaDon(lenh));
+                
+                lenh = "select ngaytao, kh.makh, kh.tenkh ,sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select concat(month(ngaytaohd),'/',year(ngaytaohd)) as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd and ngaytao = '"+tg+"' group by  ngaytao , kh.tenkh, kh.makh";
+                defaultTableModel.setRowCount(0);
+                setDataThongKe4(serviceH.getAllKH(lenh));
                 break;
             case "Thống Kê Theo Năm":
                 lenh = "select ngaytao, tenquan, sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select year(ngaytaohd) as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd  and ngaytao = '"+tg+"' group by tenquan, ngaytao";
                 defaultTableModelTTKH.setRowCount(0);
                 setDataThongKe3(serviceH.getAllHoaDon(lenh));
+                
+                lenh = "select ngaytao, kh.makh, kh.tenkh ,sum(tongtiendien+tongtiennuoc) as tong from tblhoadon as hd, khachhang as kh, (select year(ngaytaohd) as ngaytao, idhd from tblhoadon) as tam  where hd.makh=kh.makh and tam.idhd=hd.idhd and ngaytao = '"+tg+"' group by  ngaytao , kh.tenkh, kh.makh";
+                defaultTableModel.setRowCount(0);
+                setDataThongKe4(serviceH.getAllKH(lenh));
                 break;
         }
 
@@ -352,14 +454,18 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JButton ClearTK;
     private javax.swing.JButton back2;
     private javax.swing.JComboBox<String> dsThongKe;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tableChiTiet;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tableChiTiet1;
+    private javax.swing.JTable tableChiTiet2;
     private javax.swing.JTable tableTongTien;
     // End of variables declaration//GEN-END:variables
 }
