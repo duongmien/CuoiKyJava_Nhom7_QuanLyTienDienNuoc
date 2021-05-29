@@ -7,6 +7,7 @@ package servicecuaHa;
 
 import account.HoaDon;
 import account.KhachHang;
+import account.KhachHangTK;
 import account.Sotieuthu;
 import daocuaHa.ActcuaHa;
 import java.util.List;
@@ -36,5 +37,9 @@ public class ServiceH {
     //HoaDon
     public List<HoaDon> getAllHoaDon(String lenh) {
         return ActH.getAllHoaDons(lenh);
+    }
+    
+    public List<KhachHangTK> getAllKH(String lenh) {
+        return ActH.getAllKH(lenh);
     }
 }
