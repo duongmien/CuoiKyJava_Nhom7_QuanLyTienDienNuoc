@@ -89,8 +89,8 @@
                               <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <Component id="QLNV" min="-2" pref="153" max="-2" attributes="0"/>
                                   <Component id="QLDM" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="QLNV" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">

@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -31,6 +32,7 @@ public class HoaDon extends javax.swing.JFrame {
     DateFormat dateFormat3 = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
     java.util.Date date = new java.util.Date();
     java.util.Date date2 = new java.util.Date();
+     DecimalFormat formatter = new DecimalFormat("###,###,###");
      Calendar cal;
     public HoaDon(String makh) {
         initComponents();
@@ -62,7 +64,7 @@ public class HoaDon extends javax.swing.JFrame {
                 cal.add(Calendar.DATE, 15); 
                 txtHanTT.setText(dateFormat.format(cal.getTime()).toString());
                 tongtien=Double.parseDouble(txtTienDien.getText())+(Double.parseDouble(txtTienNuoc.getText()));
-                txtTongtienTT.setText(tongtien.toString()+" VND");
+                txtTongtienTT.setText(formatter.format(tongtien)+" VNĐ");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -371,7 +373,7 @@ public class HoaDon extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(103, 103, 103))))
+                                .addGap(114, 114, 114))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -566,12 +568,6 @@ public class HoaDon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CSNC;
-    private javax.swing.JButton back2;
-    private javax.swing.JButton back3;
-    private javax.swing.JButton back4;
-    private javax.swing.JButton back5;
-    private javax.swing.JButton back6;
-    private javax.swing.JButton back7;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
