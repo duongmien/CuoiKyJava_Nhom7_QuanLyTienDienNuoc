@@ -207,7 +207,7 @@ public class DangNhap extends javax.swing.JFrame {
                 st = con.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
-                    new QuanLyNhanVien().setVisible(true);
+                    new TrangChuNhanVien().setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Sai Mật Khẩu hoặc tên đăng nhập! Mời bạn nhập lại");
@@ -222,7 +222,7 @@ public class DangNhap extends javax.swing.JFrame {
                 st = con.createStatement();
                 rs = st.executeQuery(sql);
                 if (rs.next()) {
-                    new QuanLyAdmin().setVisible(true);
+                    new TrangChuAdmin().setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Sai Mật Khẩu hoặc tên đăng nhập! Mời bạn nhập lại");

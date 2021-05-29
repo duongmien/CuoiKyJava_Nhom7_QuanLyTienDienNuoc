@@ -107,7 +107,7 @@ public class KhachHang extends javax.swing.JFrame {
         gt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", " " }));
 
         Edit.setBackground(new java.awt.Color(255, 102, 0));
-        Edit.setText("Edit");
+        Edit.setText("Sửa");
         Edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EditMouseClicked(evt);
@@ -115,7 +115,7 @@ public class KhachHang extends javax.swing.JFrame {
         });
 
         Delete.setBackground(new java.awt.Color(255, 102, 0));
-        Delete.setText("Delete");
+        Delete.setText("Xóa");
         Delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeleteMouseClicked(evt);
@@ -123,7 +123,7 @@ public class KhachHang extends javax.swing.JFrame {
         });
 
         Clear.setBackground(new java.awt.Color(255, 102, 0));
-        Clear.setText("Clear");
+        Clear.setText("Làm mới");
         Clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClearMouseClicked(evt);
@@ -131,7 +131,7 @@ public class KhachHang extends javax.swing.JFrame {
         });
 
         AddBt.setBackground(new java.awt.Color(255, 102, 0));
-        AddBt.setText("Add");
+        AddBt.setText("Thêm");
         AddBt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddBtMouseClicked(evt);
@@ -304,15 +304,10 @@ public class KhachHang extends javax.swing.JFrame {
         );
 
         back2.setBackground(new java.awt.Color(255, 255, 255));
-        back2.setText("BACK");
+        back2.setText("Trở lại");
         back2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back2MouseClicked(evt);
-            }
-        });
-        back2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                back2ActionPerformed(evt);
             }
         });
 
@@ -443,13 +438,9 @@ public class KhachHang extends javax.swing.JFrame {
 
     private void back2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back2MouseClicked
         // TODO add your handling code here:
-        new TinhTienDien().setVisible(true);
+        new TrangChuNhanVien().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_back2MouseClicked
-
-    private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_back2ActionPerformed
 
     /**
      * @param args the command line arguments

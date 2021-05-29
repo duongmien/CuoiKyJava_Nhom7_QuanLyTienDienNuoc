@@ -105,7 +105,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         jLabel8.setText("Mật khẩu:");
 
         Edit.setBackground(new java.awt.Color(255, 102, 0));
-        Edit.setText("Edit");
+        Edit.setText("Sửa");
         Edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EditMouseClicked(evt);
@@ -113,7 +113,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         });
 
         Delete.setBackground(new java.awt.Color(255, 102, 0));
-        Delete.setText("Delete");
+        Delete.setText("Xóa");
         Delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeleteMouseClicked(evt);
@@ -121,7 +121,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         });
 
         Clear.setBackground(new java.awt.Color(255, 102, 0));
-        Clear.setText("Clear");
+        Clear.setText("Làm mới");
         Clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClearMouseClicked(evt);
@@ -129,7 +129,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         });
 
         AddBt.setBackground(new java.awt.Color(255, 102, 0));
-        AddBt.setText("Add");
+        AddBt.setText("Thêm");
         AddBt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AddBtMouseClicked(evt);
@@ -306,7 +306,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         );
 
         back2.setBackground(new java.awt.Color(255, 255, 255));
-        back2.setText("BACK");
+        back2.setText("Trở về");
         back2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 back2MouseClicked(evt);
@@ -468,7 +468,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
 
     private void back2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back2MouseClicked
         // TODO add your handling code here:
-        new TinhTienDien().setVisible(true);
+        new TrangChuAdmin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_back2MouseClicked
 

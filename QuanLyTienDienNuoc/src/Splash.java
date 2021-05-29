@@ -34,11 +34,12 @@ public class Splash extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 51));
 
         pgbar.setBackground(new java.awt.Color(255, 255, 255));
-        pgbar.setForeground(new java.awt.Color(255, 51, 51));
+        pgbar.setForeground(new java.awt.Color(102, 102, 255));
 
         phantram.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         phantram.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,14 +105,26 @@ public class Splash extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       
-        
+        Splash MySplash = new Splash();
+        MySplash.setVisible(true);
+        try {
+            for (int i = 0; i <= 100; i++) {
+                Thread.sleep(40);
+                MySplash.pgbar.setValue(i);
+                MySplash.phantram.setText(Integer.toString(i) + "%");
+            }
+        } catch (Exception e) {
+        }
+        MySplash.dispose();
+        new DangNhap().setVisible(true);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
