@@ -145,11 +145,6 @@ Connection con = getJDBCConnection();
                 ClearMouseClicked(evt);
             }
         });
-        Clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClearPerformed(evt);
-            }
-        });
 
         add.setBackground(new java.awt.Color(255, 102, 0));
         add.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -157,11 +152,6 @@ Connection con = getJDBCConnection();
         add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addMouseClicked(evt);
-            }
-        });
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
             }
         });
 
@@ -365,8 +355,7 @@ Connection con = getJDBCConnection();
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(back2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(back2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -435,11 +424,6 @@ public void DisplayAdInTable() {
         matkhau.setText(model.getValueAt(Myindex, 8).toString());
     }//GEN-LAST:event_bangadminMouseClicked
 
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_addActionPerformed
-
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         // TODO add your handling code here:
         if (tenadmin.getText().isEmpty() || matkhau.getText().isEmpty() || chucvu.getText().isEmpty() || username.getText().isEmpty() || ngaysinh.getText().isEmpty() || diachi.getText().isEmpty()) {
@@ -465,10 +449,6 @@ public void DisplayAdInTable() {
         }
     }//GEN-LAST:event_addMouseClicked
 
-    private void ClearPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ClearPerformed
-
     private void ClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClearMouseClicked
         // TODO add your handling code here:
         tenadmin.setText("");
@@ -480,11 +460,6 @@ public void DisplayAdInTable() {
         diachi.setText("");
         sdt.setText("");
     }//GEN-LAST:event_ClearMouseClicked
-
-    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_DeleteActionPerformed
 
     private void DeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMouseClicked
         // TODO add your handling code here:
@@ -525,6 +500,10 @@ public void DisplayAdInTable() {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments

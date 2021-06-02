@@ -314,11 +314,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                 back2MouseClicked(evt);
             }
         });
-        back2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                back2ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs_QLTD/khachhang.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -486,10 +481,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         new TrangChuAdmin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_back2MouseClicked
-
-    private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_back2ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
