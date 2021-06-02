@@ -1,0 +1,7 @@
+
+- Tạo clone trên máy tính, vào đường link push tất cả code về
+- Tạo CSDL với hệ quản trị Microsoft SQL Server
+- Trong thư mục Libraries có các library dành cho project, add chúng vào trong mục Libraries trong Netbeans
+- Sau khi tạo thành công CSDL
+	+ Trong phần Source Packages, chọn ketnoiSQL, chọn JDBCConnection
+	+ Thay đổi đường link kết nối, user name và password tương ứng với máy bạn 

@@ -50,7 +50,7 @@ Connection con = getJDBCConnection();
         sdt = new javax.swing.JTextField();
         gioitinh = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        matkhau = new javax.swing.JTextField();
+        tenadmin = new javax.swing.JTextField();
         Edit = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         Clear = new javax.swing.JButton();
@@ -58,16 +58,16 @@ Connection con = getJDBCConnection();
         jScrollPane1 = new javax.swing.JScrollPane();
         bangadmin = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
-        ngaysinh = new javax.swing.JTextField();
-        chucvu = new javax.swing.JTextField();
-        tenadmin = new javax.swing.JTextField();
-        username = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         diachi = new javax.swing.JTextField();
+        matkhau = new javax.swing.JTextField();
+        ngaysinh = new javax.swing.JTextField();
+        username = new javax.swing.JTextField();
+        chucvu = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         back2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -100,7 +100,6 @@ Connection con = getJDBCConnection();
         maadmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         maadmin.setEnabled(false);
 
-        sdt.setBackground(new java.awt.Color(240, 240, 240));
         sdt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         gioitinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -111,8 +110,7 @@ Connection con = getJDBCConnection();
         jLabel8.setForeground(new java.awt.Color(255, 102, 51));
         jLabel8.setText("Mật khẩu:");
 
-        matkhau.setBackground(new java.awt.Color(240, 240, 240));
-        matkhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tenadmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         Edit.setBackground(new java.awt.Color(255, 102, 0));
         Edit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -143,6 +141,11 @@ Connection con = getJDBCConnection();
         Clear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ClearMouseClicked(evt);
+            }
+        });
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
             }
         });
 
@@ -178,18 +181,6 @@ Connection con = getJDBCConnection();
         jLabel10.setForeground(new java.awt.Color(255, 102, 51));
         jLabel10.setText("DANH SÁCH ADMIN");
 
-        ngaysinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ngaysinh.setEnabled(false);
-
-        chucvu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        chucvu.setEnabled(false);
-
-        tenadmin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tenadmin.setEnabled(false);
-
-        username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        username.setEnabled(false);
-
         jLabel7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 102, 51));
         jLabel7.setText("Tên người dùng");
@@ -210,8 +201,15 @@ Connection con = getJDBCConnection();
         jLabel13.setForeground(new java.awt.Color(255, 102, 51));
         jLabel13.setText("Địa chỉ");
 
-        diachi.setBackground(new java.awt.Color(240, 240, 240));
         diachi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        matkhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        ngaysinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        chucvu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -250,15 +248,15 @@ Connection con = getJDBCConnection();
                                                     .addComponent(sdt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                                        .addGap(9, 9, 9)
-                                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(47, 47, 47)
-                                                        .addComponent(tenadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(jPanel4Layout.createSequentialGroup()
                                                         .addGap(10, 10, 10)
-                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                                        .addGap(9, 9, 9)
+                                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(tenadmin, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                                    .addComponent(username))
                                                 .addGap(58, 58, 58)
                                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -267,9 +265,9 @@ Connection con = getJDBCConnection();
                                                 .addGap(331, 331, 331)
                                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(chucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(ngaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                                            .addComponent(chucvu))
                                         .addGap(55, 55, 55)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,20 +293,20 @@ Connection con = getJDBCConnection();
                     .addComponent(maadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gioitinh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tenadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sdt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chucvu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,12 +419,12 @@ public void DisplayAdInTable() {
         sdt.setText(model.getValueAt(Myindex, 5).toString());
         diachi.setText(model.getValueAt(Myindex, 6).toString());
         chucvu.setText(model.getValueAt(Myindex, 7).toString());
-        matkhau.setText(model.getValueAt(Myindex, 8).toString());
+        tenadmin.setText(model.getValueAt(Myindex, 8).toString());
     }//GEN-LAST:event_bangadminMouseClicked
 
     private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
         // TODO add your handling code here:
-        if (tenadmin.getText().isEmpty() || matkhau.getText().isEmpty() || chucvu.getText().isEmpty() || username.getText().isEmpty() || ngaysinh.getText().isEmpty() || diachi.getText().isEmpty()) {
+        if (tenadmin.getText().isEmpty() || tenadmin.getText().isEmpty() || chucvu.getText().isEmpty() || username.getText().isEmpty() || ngaysinh.getText().isEmpty() || diachi.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không được để trống! Mời bạn nhập lại!");
         } else {
             try {
@@ -438,7 +436,7 @@ public void DisplayAdInTable() {
                 add.setString(5, sdt.getText());
                 add.setString(6, diachi.getText());
                 add.setString(7, chucvu.getText());
-                add.setString(8, matkhau.getText());
+                add.setString(8, tenadmin.getText());
                 int row = add.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Thêm Admin thành công!");
 
@@ -454,11 +452,12 @@ public void DisplayAdInTable() {
         tenadmin.setText("");
         maadmin.setText("");
         username.setText("");
-        matkhau.setText("");
+        tenadmin.setText("");
         ngaysinh.setText("");
         chucvu.setText("");
         diachi.setText("");
         sdt.setText("");
+        matkhau.setText("");
     }//GEN-LAST:event_ClearMouseClicked
 
     private void DeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeleteMouseClicked
@@ -481,11 +480,11 @@ public void DisplayAdInTable() {
 
     private void EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditMouseClicked
         // TODO add your handling code here:
-        if (tenadmin.getText().isEmpty() || matkhau.getText().isEmpty() || chucvu.getText().isEmpty() || username.getText().isEmpty() || ngaysinh.getText().isEmpty() || diachi.getText().isEmpty()) {
+        if (tenadmin.getText().isEmpty() || tenadmin.getText().isEmpty() || chucvu.getText().isEmpty() || username.getText().isEmpty() || ngaysinh.getText().isEmpty() || diachi.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Thieu thong tin");
         } else {
             try {
-                String sql = "Update tblAdmin set TenAdmin=N'" + tenadmin.getText() + "'" + ",MatKhau=N'" + matkhau.getText() + "'" + ",GioiTinh=N'" + gioitinh.getSelectedItem().toString() + "'" + ",username=N'" + username.getText() + "'" + ",ngaysinh=N'" + ngaysinh.getText() + "'" + ",sdt=N'" + sdt.getText() + "'" + ",chucvu=N'" + chucvu.getText() + "'" + "where MaAdmin=" + maadmin.getText();
+                String sql = "Update tblAdmin set TenAdmin=N'" + tenadmin.getText() + "'" + ",MatKhau=N'" + tenadmin.getText() + "'" + ",GioiTinh=N'" + gioitinh.getSelectedItem().toString() + "'" + ",username=N'" + username.getText() + "'" + ",ngaysinh=N'" + ngaysinh.getText() + "'" + ",sdt=N'" + sdt.getText() + "'" + ",chucvu=N'" + chucvu.getText() + "'" + "where MaAdmin=" + maadmin.getText();
                 Statement Add = con.createStatement();
                 Add.executeUpdate(sql);
                 DisplayAdInTable();
@@ -504,6 +503,10 @@ public void DisplayAdInTable() {
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DeleteActionPerformed
+
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClearActionPerformed
 
     /**
      * @param args the command line arguments

@@ -196,14 +196,14 @@
                               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                               <Component id="Delete" min="-2" pref="73" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                              <Component id="Clear" min="-2" pref="79" max="-2" attributes="0"/>
+                              <Component id="Clear" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="384" max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" pref="284" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="268" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -75,6 +75,7 @@ create table tblHoaDon
 --Insert 1 tblAdmin
 
 Insert into tblAdmin values(N'Miên','mien123',N'nữ','2001-1-1','0911929193',N'Quảng Nam',N'Giám đốc','123456')
+Insert into tblAdmin values(N'Hà','admin',N'Nam','2001-1-1','0911929199',N'Quảng Nam',N'Tổng Giám đốc','admin')
 
 
 --Insert 5 NhanVien
@@ -83,6 +84,8 @@ Insert into NhanVien values(N'Miên','mien123',N'nữ','2001-1-1','0911929193',N
 Insert into NhanVien values(N'Hạ','ha123',N'nữ','2001-1-1','0911929194',N'Quảng Nam',N'Nhân viên','123456')
 Insert into NhanVien values(N'Linh','tlinh123',N'nữ','2001-1-1','0911929195',N'Nghệ An',N'Nhân viên','123456')
 Insert into NhanVien values(N'Linh','hlin123',N'nữ','2001-1-1','0911929196',N'Quảng Ngãi',N'Nhân viên','123456')
+Insert into NhanVien values(N'Lan','nhanvien',N'nữ','2001-1-1','0911929197',N'Quảng Trị',N'Nhân viên','nhanvien')
+
 
 Insert into GiaDien values('0-50',1549)
 Insert into GiaDien values('51-100',1600)
@@ -100,6 +103,7 @@ Insert into KhachHang values(N'Dương Thị Miên','2001-1-1',N'nữ','09119291
 Insert into KhachHang values(N'Nguyễn Thị Khánh Hạ','2001-1-1',N'nữ','0911929194',N'512 Điện Biên Phủ ',N'Thanh Kê Đông',N'Thanh Khê')
 Insert into KhachHang values(N'Nguyễn Thị Thùy Linh','2001-1-1',N'nữ','0911929195',N'Thủy Sơn 4',N'Hoà Hải',N'Ngũ Hành Sơn') 
 Insert into KhachHang values(N'Nguyễn Thị Hoàng Linh','2001-1-1',N'nữ','0911929196',N'Q522B Nguyễn Lương Bằng',N'Hoà Hiệp Nam',N'Liên Chiểu')
+
 
 Insert into tblSotieuthu values(1,125,180,136,148,'2021-5-26')
 Insert into tblSotieuthu values(2,115,129,166,200,'2021-5-26')
